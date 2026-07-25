@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        var scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          var element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          var hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          var newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>week4</title>
+    <script type="module" crossorigin src="./assets/index-D_l-X6Gn.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DrOAYyMx.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-DZLz74EQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-cj45iF1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-bbSa6V1W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-B585XJK6.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-BjyRIiB0.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-srqCRIcI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-ChS5GBa2.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BlAkgCmw.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-BaXqCYqP.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-C-HcgP3A.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-BxvS_drY.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-C3DbbTE3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C8L1g4FL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DjFD6uqw.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-qhKOrN4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-C3lT2mrt.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-D2K3AXi3.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-GjRGzRTx.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-BZzIne4N.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DPrt9GJd.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-D5Z9rM2X.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-D4FHE--3.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-DxkXZaQt.js">
+    <link rel="modulepreload" crossorigin href="./assets/jotai-CqcPj6qO.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-L2NCWzlc.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-JtDUKn_v.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-DfSRWBS2.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-U2NFpcFA.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BaKzT0lw.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-oIXZIVkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-BumILI4b.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DvFyyQ0g.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-xTSywenE.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-CSTolK5a.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSlice-B27Cqkm6.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-CPHpt5EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Rh0PP8AP.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-C7xY7zs_.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-BJLAGM8G.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-Czo8nniw.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CRhq8yNT.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-BVB3VlsI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CcxW2rNb.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BiJechkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-JSI5Ub3m.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-Ccjmqswm.js">
+    <link rel="modulepreload" crossorigin href="./assets/connection-9kD-dTJL.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DNmDtTkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-DYNQ6-Fr.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-Dmpo08fh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BhO6Skm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DYRcKBTi.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-nXbuW0eA.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-hfg5F1cQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BzGULjtt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-4dBKvAyu.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-0fLgeFYh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dg2hoRfc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BIwaxZLx.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-p3EifZIQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-Cm5h4Epc.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-DDpPg0Qh.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-CJyAPkYT.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-CIKnF2iY.js">
+    <link rel="modulepreload" crossorigin href="./assets/toNumber-B2sDWAxt.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-B6JN1xKT.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DEligtiB.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-Dibvs7y1.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-DI1fWf7x.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-CJaEi7_U.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CeDLVlyC.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BFNVm4a_.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CeCEf8EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Cf8AdHpz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-Bc3t2abM.js">
+    <link rel="modulepreload" crossorigin href="./assets/lazy-C9W0-DeZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-6gZ00BOD.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cf6SJD9T.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-UbHGVTRZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DCTaBKUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-Di3J3oYn.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DwXLP_VL.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CxCw9oQX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-ClIOAWpQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BjCf8IUS.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CSz2fa9C.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-iPaBBhYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-CWS6NbZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-8H_iASaM.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-B4wenCLd.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DLOryQh1.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-ClGQ4GXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D5-sZD73.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DY4s_wkY.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-hfBoJmYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D_bGND83.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-ffUzGr5X.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-ODI3-5mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CysUGjt6.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BKJuA7HR.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-5y3x0_Ja.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BlRyYfZp.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-KxLnFZmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-B62m-yTZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-CXTmbRd-.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-Cy78x1lY.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-BVYGX4Ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BdiVNqB7.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-C2UxG4br.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BLJxco2q.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-missing-import-C21Sf8A6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CpUo9WyH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-Bl5E4Sdk.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CmIpJ80x.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Blvf_Trz.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dr-5EPUQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-4lRYVxu8.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-ClM1rWQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-B43jkoR_.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-B0oHN5Qo.js">
+    <link rel="modulepreload" crossorigin href="./assets/shim-CmijwmU8.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-juEDJvh4.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-EzlYz0hD.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-D6cn-CSb.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-D2bcOLFs.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-DBEwDXZO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BY77p5Y8.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-CZ1Fqm86.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-i48JTlkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/Output-C35CXkvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/name-cell-input-Dm0PF-vI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useHotkey-BBy_zgts.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CQqxjtPE.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0W-62VK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DA4REUWb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CTnCzwDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BeLp8J28.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CT07wNjy.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CcT9aH0f.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cyd6BKf3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D6YDRgIP.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-fgvVNt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D2OZ4af5.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cep6eaBU.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CG6nuuxF.js">
+    <link rel="modulepreload" crossorigin href="./assets/apl-B3qFo22I.js">
+    <link rel="modulepreload" crossorigin href="./assets/asciiarmor-BeSUfcJj.js">
+    <link rel="modulepreload" crossorigin href="./assets/asn1-Yuw4PYDQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/brainfuck-ONQfYmGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/clike-BYwnXoSp.js">
+    <link rel="modulepreload" crossorigin href="./assets/clojure-D0qS3s8l.js">
+    <link rel="modulepreload" crossorigin href="./assets/cmake-DrUW7k4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/cobol-CTy-rAxC.js">
+    <link rel="modulepreload" crossorigin href="./assets/coffeescript-DvX85jdj.js">
+    <link rel="modulepreload" crossorigin href="./assets/commonlisp-rN2-4tA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/crystal-DH9HaNMr.js">
+    <link rel="modulepreload" crossorigin href="./assets/css-BWSZbBOG.js">
+    <link rel="modulepreload" crossorigin href="./assets/cypher-CN0hHtlQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/d-CfFhByTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/diff-D5KX9jWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dtd-CAOt54Lh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dylan-BRjSQyPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ecl-BFmhHLwk.js">
+    <link rel="modulepreload" crossorigin href="./assets/eiffel-C-yEc4lk.js">
+    <link rel="modulepreload" crossorigin href="./assets/elm-D-xosfDF.js">
+    <link rel="modulepreload" crossorigin href="./assets/erlang-DwS6VO1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/simple-mode-iIH2XKLC.js">
+    <link rel="modulepreload" crossorigin href="./assets/factor-BAvqFhQd.js">
+    <link rel="modulepreload" crossorigin href="./assets/forth-M-b7RVCY.js">
+    <link rel="modulepreload" crossorigin href="./assets/fortran-BY42hR-9.js">
+    <link rel="modulepreload" crossorigin href="./assets/gas-DUer3zP4.js">
+    <link rel="modulepreload" crossorigin href="./assets/gherkin-BOmBFtxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/groovy-CYRk_Zq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/haskell-fLeayyju.js">
+    <link rel="modulepreload" crossorigin href="./assets/haxe-DiJvQ3PF.js">
+    <link rel="modulepreload" crossorigin href="./assets/idl-D0PcccZ6.js">
+    <link rel="modulepreload" crossorigin href="./assets/javascript-oC9cmYGe.js">
+    <link rel="modulepreload" crossorigin href="./assets/julia-z0xq3uqV.js">
+    <link rel="modulepreload" crossorigin href="./assets/livescript-BbVvVfSY.js">
+    <link rel="modulepreload" crossorigin href="./assets/lua-CtEmKXsU.js">
+    <link rel="modulepreload" crossorigin href="./assets/mathematica-B-SjlQIm.js">
+    <link rel="modulepreload" crossorigin href="./assets/mbox-BdnWvTJv.js">
+    <link rel="modulepreload" crossorigin href="./assets/mirc-Cyycx3am.js">
+    <link rel="modulepreload" crossorigin href="./assets/mllike-DSB5KObs.js">
+    <link rel="modulepreload" crossorigin href="./assets/modelica-DIZcE54y.js">
+    <link rel="modulepreload" crossorigin href="./assets/mscgen-MISBZbzR.js">
+    <link rel="modulepreload" crossorigin href="./assets/mumps-Cnu1tNUa.js">
+    <link rel="modulepreload" crossorigin href="./assets/nsis-BjqFSJO3.js">
+    <link rel="modulepreload" crossorigin href="./assets/ntriples-2rre165b.js">
+    <link rel="modulepreload" crossorigin href="./assets/octave-C7u5CeUZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/oz-D5aE2uST.js">
+    <link rel="modulepreload" crossorigin href="./assets/pascal-DTApZM3o.js">
+    <link rel="modulepreload" crossorigin href="./assets/perl-Ckgh9LJK.js">
+    <link rel="modulepreload" crossorigin href="./assets/pig-jAl9a1Kh.js">
+    <link rel="modulepreload" crossorigin href="./assets/powershell-C_IKzlOl.js">
+    <link rel="modulepreload" crossorigin href="./assets/properties-BdVxDpDJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/protobuf-DLu_SUI6.js">
+    <link rel="modulepreload" crossorigin href="./assets/pug-B4oU-GIl.js">
+    <link rel="modulepreload" crossorigin href="./assets/puppet-CShRizHW.js">
+    <link rel="modulepreload" crossorigin href="./assets/python-CV8UgSMV.js">
+    <link rel="modulepreload" crossorigin href="./assets/q-D2OTJZH4.js">
+    <link rel="modulepreload" crossorigin href="./assets/r-DRqIAgj1.js">
+    <link rel="modulepreload" crossorigin href="./assets/rpm-BStFD27m.js">
+    <link rel="modulepreload" crossorigin href="./assets/ruby-C37hkPS4.js">
+    <link rel="modulepreload" crossorigin href="./assets/sas-CCEIl8BG.js">
+    <link rel="modulepreload" crossorigin href="./assets/scheme-B0jflgrk.js">
+    <link rel="modulepreload" crossorigin href="./assets/shell-Cq7B0hFW.js">
+    <link rel="modulepreload" crossorigin href="./assets/sieve-DS0lS4kt.js">
+    <link rel="modulepreload" crossorigin href="./assets/smalltalk-HHM53Uii.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparql-BMqtnWzI.js">
+    <link rel="modulepreload" crossorigin href="./assets/stylus-Br2gMpMI.js">
+    <link rel="modulepreload" crossorigin href="./assets/swift-BJ8qi_zI.js">
+    <link rel="modulepreload" crossorigin href="./assets/tcl-D0knbOX7.js">
+    <link rel="modulepreload" crossorigin href="./assets/textile-DrRQSuh3.js">
+    <link rel="modulepreload" crossorigin href="./assets/toml-C2kDGfZi.js">
+    <link rel="modulepreload" crossorigin href="./assets/troff-2dFxqWQa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-cfg-CBXajWEo.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-Cj4sIofh.js">
+    <link rel="modulepreload" crossorigin href="./assets/turtle-CDdPtp5F.js">
+    <link rel="modulepreload" crossorigin href="./assets/vb-CtEhAMYU.js">
+    <link rel="modulepreload" crossorigin href="./assets/vbscript-B0nzdgzL.js">
+    <link rel="modulepreload" crossorigin href="./assets/velocity-DR7TSall.js">
+    <link rel="modulepreload" crossorigin href="./assets/verilog-MmKxT9bW.js">
+    <link rel="modulepreload" crossorigin href="./assets/vhdl-0jJrpQNA.js">
+    <link rel="modulepreload" crossorigin href="./assets/webidl-D9f20BkN.js">
+    <link rel="modulepreload" crossorigin href="./assets/xquery-B0eSGN9q.js">
+    <link rel="modulepreload" crossorigin href="./assets/yacas-BS613OH9.js">
+    <link rel="modulepreload" crossorigin href="./assets/z80-CJYC52xh.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DIjo4soQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CVHckof0.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DHSHWgjO.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-DVXuVt6V.js">
+    <link rel="modulepreload" crossorigin href="./assets/ConsoleOutput-BatcZKPn.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiJ1mek2.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BW6MxaEk.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-y1F5Z2Y5.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-Dr7zIwOF.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-Bn-XGt0r.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BsAvcxPB.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DboMQFVg.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-C1ukCxS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-BiyTaqjl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-D5gLerI4.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-CpOepRkn.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-CMwEtzs3.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BtLtbyWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CjyEJrMA.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-CAcr7Wct.js">
+    <link rel="modulepreload" crossorigin href="./assets/_toKey-BbfXi6wG.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CAH-_bH2.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-BzRjRyGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BNbDM0Mz.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-GfTQvjwT.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CBaILRil.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-BXa7vpHk.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-Dm03euNS.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-text-DIapyZTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-GcyCxgZE.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-C9Bp8jO8.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-g86spPBc.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DUdOrxYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-Cnpv5prF.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-x-D7HuxVjU.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CFRARokg.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CZtzD7wN.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-CJBhqjDq.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-4Jci0WvL.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-C9lQcGwc.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-eYq94Ok6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-EIl6UkD1.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-Dv1hfKnk.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-CHCkBeAL.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BEPT_zOX.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-lvJcGOAk.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-umA55KZB.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-CQF_Dkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DgwLm9Ah.js">
+    <link rel="modulepreload" crossorigin href="./assets/_basePickBy-DQPJpG_l.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DJvAHg2T.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-CCW7bjI-.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-DKjdQj9o.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe--Wj1_HOr.js">
+    <link rel="modulepreload" crossorigin href="./assets/send-BChAQAUR.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DEnZI2dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-CN8Z3_-5.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-BGycXz6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-DtrWSlr6.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BvrC6Bsv.css">
+    <link rel="stylesheet" crossorigin href="./assets/dist-CUNt1nyj.css">
+    <link rel="stylesheet" crossorigin href="./assets/Output-Br1mGKlI.css">
+    <link rel="stylesheet" crossorigin href="./assets/ConsoleOutput-BFFTcC5Y.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-xc2Ie6gg.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.18.1%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20time%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20return%20mo%2C%20np%2C%20plt%2C%20time%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Search%20Algorithms%20Assignment%0A%20%20%20%20This%20notebook%20implements%20and%20analyzes%20Linear%20Search%20and%20Binary%20Search%20algorithms.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%201%3A%20Linear%20Search%20Implementation%0A%20%20%20%20Implement%20the%20Linear%20Search%20Algorithm%20for%20an%20arbitrary%20input%20array.%0A%0A%20%20%20%20**Algorithm%3A**%20Sequentially%20check%20each%20element%20until%20the%20target%20value%20is%20found%20or%20the%20end%20is%20reached.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20linSearch(arr%2C%20val)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Linear%20search%20algorithm.%0A%20%20%20%20Returns%20the%20index%20of%20val%20in%20arr%2C%20or%20-1%20if%20not%20found.%0A%20%20%20%20%22%22%22%0A%20%20%20%20for%20i%20in%20range(len(arr))%3A%0A%20%20%20%20%20%20%20%20if%20val%20%3D%3D%20arr%5Bi%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20i%0A%20%20%20%20return%20-1%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Test%20the%20linear%20search%20implementation%0A%20%20%20%20test_arr%20%3D%20%5B5%2C%202%2C%208%2C%201%2C%209%2C%203%5D%0A%20%20%20%20test_val%20%3D%208%0A%20%20%20%20test_result%20%3D%20linSearch(test_arr%2C%20test_val)%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Task%201%20Verification%0A%0A%20%20%20%20**Test%20array%3A**%20%60%7Btest_arr%7D%60%20%20%0A%20%20%20%20**Searching%20for%3A**%20%60%7Btest_val%7D%60%20%20%0A%20%20%20%20**Found%20at%20index%3A**%20%60%7Btest_result%7D%60%20%20%0A%20%20%20%20**Verification%3A**%20%7B'%E2%9C%93%20Correct!'%20if%20test_arr%5Btest_result%5D%20%3D%3D%20test_val%20else%20'%E2%9C%97%20Error'%7D%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%202%3A%20Linear%20Search%20Performance%0A%20%20%20%20Create%20an%20array%20of%20500%20elements%20(0-499)%2C%20shuffle%20it%2C%20find%20number%2010%2C%20and%20measure%20the%20time.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20np%2C%20plt%2C%20time)%3A%0A%20%20%20%20%23%20Create%20and%20shuffle%20array%0A%20%20%20%20t2_arr%20%3D%20np.arange(500)%0A%20%20%20%20np.random.shuffle(t2_arr)%0A%0A%20%20%20%20%23%20Search%20for%2010%20and%20measure%20time%0A%20%20%20%20t2_start%20%3D%20time.perf_counter()%0A%20%20%20%20t2_idx%20%3D%20linSearch(t2_arr%2C%2010)%0A%20%20%20%20t2_end%20%3D%20time.perf_counter()%0A%20%20%20%20t2_elapsed%20%3D%20t2_end%20-%20t2_start%0A%0A%20%20%20%20%23%20Visualize%20where%2010%20was%20found%20in%20the%20array%0A%20%20%20%20t2_fig%2C%20(t2_ax1%2C%20t2_ax2)%20%3D%20plt.subplots(1%2C%202%2C%20figsize%3D(14%2C%204))%0A%0A%20%20%20%20%23%20Show%20position%20in%20array%0A%20%20%20%20t2_positions%20%3D%20np.arange(500)%0A%20%20%20%20t2_colors%20%3D%20%5B'red'%20if%20i%20%3D%3D%20t2_idx%20else%20'lightblue'%20for%20i%20in%20t2_positions%5D%0A%20%20%20%20t2_ax1.bar(t2_positions%5B%3A%3A10%5D%2C%20t2_arr%5B%3A%3A10%5D%2C%20color%3D%5Bt2_colors%5Bi%5D%20for%20i%20in%20range(0%2C%20500%2C%2010)%5D)%0A%20%20%20%20t2_ax1.axvline(x%3Dt2_idx%2C%20color%3D'red'%2C%20linestyle%3D'--'%2C%20linewidth%3D2%2C%20label%3Df'Found%20at%20index%20%7Bt2_idx%7D')%0A%20%20%20%20t2_ax1.set_xlabel('Index')%0A%20%20%20%20t2_ax1.set_ylabel('Value')%0A%20%20%20%20t2_ax1.set_title('Array%20Visualization%20(every%2010th%20element%20shown)')%0A%20%20%20%20t2_ax1.legend()%0A%20%20%20%20t2_ax1.grid(True%2C%20alpha%3D0.3)%0A%0A%20%20%20%20%23%20Show%20search%20progression%0A%20%20%20%20t2_search_positions%20%3D%20list(range(t2_idx%20%2B%201))%0A%20%20%20%20t2_ax2.plot(t2_search_positions%2C%20%5B1%5D*len(t2_search_positions)%2C%20'o-'%2C%20markersize%3D3%2C%20alpha%3D0.6)%0A%20%20%20%20t2_ax2.scatter(%5Bt2_idx%5D%2C%20%5B1%5D%2C%20color%3D'red'%2C%20s%3D200%2C%20zorder%3D5%2C%20label%3D'Target%20found')%0A%20%20%20%20t2_ax2.set_xlabel('Comparison%20Number')%0A%20%20%20%20t2_ax2.set_ylabel('')%0A%20%20%20%20t2_ax2.set_title(f'Linear%20Search%20Progress%3A%20%7Bt2_idx%20%2B%201%7D%20comparisons')%0A%20%20%20%20t2_ax2.set_yticks(%5B%5D)%0A%20%20%20%20t2_ax2.legend()%0A%20%20%20%20t2_ax2.grid(True%2C%20alpha%3D0.3)%0A%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20plt.show()%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Task%202%20Results%0A%0A%20%20%20%20**Array%20size%3A**%20500%20elements%20%20%0A%20%20%20%20**Value%20searched%3A**%2010%20%20%0A%20%20%20%20**Found%20at%20index%3A**%20%60%7Bt2_idx%7D%60%20%20%0A%0A%20%20%20%20**Time%20elapsed%3A**%20%60%7Bt2_elapsed%3A.8f%7D%60%20seconds%20%20%0A%20%20%20%20**Comparisons%20needed%3A**%20%7Bt2_idx%20%2B%201%7D%20out%20of%20500%20possible%0A%0A%20%20%20%20The%20visualization%20shows%20where%20the%20value%20was%20found%20in%20the%20shuffled%20array.%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%203%3A%20Statistical%20Analysis%20of%20Linear%20Search%0A%20%20%20%20Run%201000%20trials%20and%20analyze%20the%20time%20distribution.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20np%2C%20plt%2C%20time)%3A%0A%20%20%20%20t3_N%20%3D%201000%0A%20%20%20%20t3_times%20%3D%20np.empty(t3_N%2C%20dtype%3Dfloat)%0A%20%20%20%20t3_positions%20%3D%20np.empty(t3_N%2C%20dtype%3Dint)%0A%0A%20%20%20%20%23%20Run%201000%20searches%0A%20%20%20%20for%20t3_i%20in%20range(t3_N)%3A%0A%20%20%20%20%20%20%20%20t3_arr%20%3D%20np.arange(500)%0A%20%20%20%20%20%20%20%20np.random.shuffle(t3_arr)%0A%0A%20%20%20%20%20%20%20%20t3_start%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20t3_pos%20%3D%20linSearch(t3_arr%2C%2010)%0A%20%20%20%20%20%20%20%20t3_end%20%3D%20time.perf_counter()%0A%0A%20%20%20%20%20%20%20%20t3_times%5Bt3_i%5D%20%3D%20t3_end%20-%20t3_start%0A%20%20%20%20%20%20%20%20t3_positions%5Bt3_i%5D%20%3D%20t3_pos%0A%0A%20%20%20%20%23%20Create%20comprehensive%20visualization%0A%20%20%20%20t3_fig%20%3D%20plt.figure(figsize%3D(16%2C%2010))%0A%20%20%20%20t3_gs%20%3D%20t3_fig.add_gridspec(3%2C%202%2C%20hspace%3D0.3%2C%20wspace%3D0.3)%0A%0A%20%20%20%20%23%20Histogram%20of%20times%0A%20%20%20%20t3_ax1%20%3D%20t3_fig.add_subplot(t3_gs%5B0%2C%20%3A%5D)%0A%20%20%20%20t3_ax1.hist(t3_times%20*%201e6%2C%20bins%3D50%2C%20color%3D'steelblue'%2C%20edgecolor%3D'black'%2C%20alpha%3D0.7)%0A%20%20%20%20t3_ax1.axvline(x%3Dnp.mean(t3_times)%20*%201e6%2C%20color%3D'red'%2C%20linestyle%3D'--'%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20linewidth%3D2%2C%20label%3Df'Mean%3A%20%7Bnp.mean(t3_times)*1e6%3A.2f%7D%20%CE%BCs')%0A%20%20%20%20t3_ax1.axvline(x%3Dnp.median(t3_times)%20*%201e6%2C%20color%3D'green'%2C%20linestyle%3D'--'%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20linewidth%3D2%2C%20label%3Df'Median%3A%20%7Bnp.median(t3_times)*1e6%3A.2f%7D%20%CE%BCs')%0A%20%20%20%20t3_ax1.set_xlabel('Time%20(microseconds)')%0A%20%20%20%20t3_ax1.set_ylabel('Frequency')%0A%20%20%20%20t3_ax1.set_title('Linear%20Search%20Time%20Distribution%20(1000%20runs)')%0A%20%20%20%20t3_ax1.legend()%0A%20%20%20%20t3_ax1.grid(True%2C%20alpha%3D0.3)%0A%0A%20%20%20%20%23%20Position%20distribution%0A%20%20%20%20t3_ax2%20%3D%20t3_fig.add_subplot(t3_gs%5B1%2C%200%5D)%0A%20%20%20%20t3_ax2.hist(t3_positions%2C%20bins%3D50%2C%20color%3D'coral'%2C%20edgecolor%3D'black'%2C%20alpha%3D0.7)%0A%20%20%20%20t3_ax2.axvline(x%3Dnp.mean(t3_positions)%2C%20color%3D'red'%2C%20linestyle%3D'--'%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20linewidth%3D2%2C%20label%3Df'Mean%3A%20%7Bnp.mean(t3_positions)%3A.1f%7D')%0A%20%20%20%20t3_ax2.set_xlabel('Index%20Position')%0A%20%20%20%20t3_ax2.set_ylabel('Frequency')%0A%20%20%20%20t3_ax2.set_title('Distribution%20of%20Found%20Positions')%0A%20%20%20%20t3_ax2.legend()%0A%20%20%20%20t3_ax2.grid(True%2C%20alpha%3D0.3)%0A%0A%0A%0A%0A%0A%20%20%20%20%23%20Statistics%20table%0A%20%20%20%20t3_ax5%20%3D%20t3_fig.add_subplot(t3_gs%5B2%2C%201%5D)%0A%20%20%20%20t3_ax5.axis('off')%0A%20%20%20%20t3_stats_data%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%5B'Statistic'%2C%20'Value'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Number%20of%20runs'%2C%20f'%7Bt3_N%7D'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Mean%20time'%2C%20f'%7Bnp.mean(t3_times)*1e6%3A.3f%7D%20%CE%BCs'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Median%20time'%2C%20f'%7Bnp.median(t3_times)*1e6%3A.3f%7D%20%CE%BCs'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Std%20deviation'%2C%20f'%7Bnp.std(t3_times)*1e6%3A.3f%7D%20%CE%BCs'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Min%20time'%2C%20f'%7Bnp.min(t3_times)*1e6%3A.3f%7D%20%CE%BCs'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Max%20time'%2C%20f'%7Bnp.max(t3_times)*1e6%3A.3f%7D%20%CE%BCs'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Mean%20position'%2C%20f'%7Bnp.mean(t3_positions)%3A.1f%7D'%5D%2C%0A%20%20%20%20%20%20%20%20%5B'Theoretical%20avg'%2C%20'250%20(middle%20of%20array)'%5D%0A%20%20%20%20%5D%0A%20%20%20%20t3_table%20%3D%20t3_ax5.table(cellText%3Dt3_stats_data%2C%20cellLoc%3D'left'%2C%20loc%3D'center'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20colWidths%3D%5B0.5%2C%200.5%5D)%0A%20%20%20%20t3_table.auto_set_font_size(False)%0A%20%20%20%20t3_table.set_fontsize(10)%0A%20%20%20%20t3_table.scale(1%2C%202)%0A%20%20%20%20%23%20Style%20header%20row%0A%20%20%20%20for%20t3_j%20in%20range(2)%3A%0A%20%20%20%20%20%20%20%20t3_table%5B(0%2C%20t3_j)%5D.set_facecolor('%2340466e')%0A%20%20%20%20%20%20%20%20t3_table%5B(0%2C%20t3_j)%5D.set_text_props(weight%3D'bold'%2C%20color%3D'white')%0A%0A%20%20%20%20plt.show()%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Task%203%20Results%0A%0A%20%20%20%20**Summary%20Statistics%3A**%0A%20%20%20%20-%20**Total%20runs%3A**%20%7Bt3_N%7D%0A%20%20%20%20-%20**Mean%20time%3A**%20%7Bnp.mean(t3_times)*1e6%3A.3f%7D%20%CE%BCs%0A%20%20%20%20-%20**Median%20time%3A**%20%7Bnp.median(t3_times)*1e6%3A.3f%7D%20%CE%BCs%0A%20%20%20%20-%20**Standard%20deviation%3A**%20%7Bnp.std(t3_times)*1e6%3A.3f%7D%20%CE%BCs%0A%20%20%20%20-%20**Mean%20position%20found%3A**%20%7Bnp.mean(t3_positions)%3A.1f%7D%20(expected%3A%20~250)%0A%0A%20%20%20%20**Analysis%3A**%0A%20%20%20%20The%20histogram%20shows%20the%20distribution%20of%20search%20times%20across%201000%20randomized%20arrays.%20%0A%20%20%20%20Since%20the%20target%20value%20(10)%20can%20appear%20anywhere%20with%20equal%20probability%2C%20we%20expect%20%0A%20%20%20%20to%20find%20it%20around%20the%20middle%20of%20the%20array%20on%20average%20(index%20~250)%2C%20which%20requires%20%0A%20%20%20%20~250%20comparisons.%20The%20scatter%20plot%20shows%20the%20positive%20correlation%20between%20position%20%0A%20%20%20%20and%20time%20-%20elements%20found%20later%20in%20the%20array%20take%20longer%20to%20locate.%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%204%3A%20Binary%20Search%20(Iterative)%0A%20%20%20%20Implement%20the%20Binary%20Search%20Algorithm%20for%20a%20sorted%20input%20array.%0A%0A%20%20%20%20**Algorithm%3A**%20Repeatedly%20divide%20the%20search%20interval%20in%20half.%20Compare%20the%20target%0A%20%20%20%20with%20the%20middle%20element%20and%20eliminate%20half%20of%20the%20search%20space.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20binSearch(arr%2C%20val)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Binary%20search%20algorithm%20(iterative).%0A%20%20%20%20Returns%20the%20index%20of%20val%20in%20sorted%20arr%2C%20or%20-1%20if%20not%20found.%0A%20%20%20%20%22%22%22%0A%20%20%20%20left%20%3D%200%0A%20%20%20%20right%20%3D%20len(arr)%20-%201%0A%0A%20%20%20%20while%20left%20%3C%3D%20right%3A%0A%20%20%20%20%20%20%20%20mid%20%3D%20(left%20%2B%20right)%20%2F%2F%202%0A%20%20%20%20%20%20%20%20if%20arr%5Bmid%5D%20%3D%3D%20val%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mid%0A%20%20%20%20%20%20%20%20elif%20arr%5Bmid%5D%20%3C%20val%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%0A%0A%20%20%20%20return%20-1%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20np%2C%20plt)%3A%0A%20%20%20%20%23%20Test%20binary%20search%20with%20visualization%0A%20%20%20%20t4_arr%20%3D%20np.array(%5B1%2C%202%2C%203%2C%204%2C%205%2C%207%2C%208%2C%2010%2C%2012%2C%2015%2C%2018%2C%2020%2C%2023%2C%2025%2C%2028%2C%2030%5D)%0A%20%20%20%20t4_target%20%3D%2020%0A%0A%20%20%20%20%23%20Track%20the%20search%20process%0A%20%20%20%20t4_search_steps%20%3D%20%5B%5D%0A%20%20%20%20t4_left%2C%20t4_right%20%3D%200%2C%20len(t4_arr)%20-%201%0A%0A%20%20%20%20while%20t4_left%20%3C%3D%20t4_right%3A%0A%20%20%20%20%20%20%20%20t4_mid%20%3D%20(t4_left%20%2B%20t4_right)%20%2F%2F%202%0A%20%20%20%20%20%20%20%20t4_search_steps.append((t4_left%2C%20t4_mid%2C%20t4_right%2C%20t4_arr%5Bt4_mid%5D))%0A%20%20%20%20%20%20%20%20if%20t4_arr%5Bt4_mid%5D%20%3D%3D%20t4_target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20break%0A%20%20%20%20%20%20%20%20elif%20t4_arr%5Bt4_mid%5D%20%3C%20t4_target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20t4_left%20%3D%20t4_mid%20%2B%201%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20t4_right%20%3D%20t4_mid%20-%201%0A%0A%20%20%20%20t4_idx%20%3D%20binSearch(t4_arr%2C%20t4_target)%0A%0A%20%20%20%20%23%20Visualize%20the%20binary%20search%20process%0A%20%20%20%20t4_fig%2C%20t4_axes%20%3D%20plt.subplots(len(t4_search_steps)%2C%201%2C%20figsize%3D(14%2C%202*len(t4_search_steps)))%0A%20%20%20%20if%20len(t4_search_steps)%20%3D%3D%201%3A%0A%20%20%20%20%20%20%20%20t4_axes%20%3D%20%5Bt4_axes%5D%0A%0A%20%20%20%20for%20t4_step%2C%20(t4_ax)%20in%20enumerate(t4_axes)%3A%0A%20%20%20%20%20%20%20%20t4_left_val%2C%20t4_mid_val%2C%20t4_right_val%2C%20t4_mid_arr%20%3D%20t4_search_steps%5Bt4_step%5D%0A%0A%20%20%20%20%20%20%20%20t4_colors%20%3D%20%5B'lightgray'%5D%20*%20len(t4_arr)%0A%20%20%20%20%20%20%20%20for%20t4_i%20in%20range(t4_left_val%2C%20t4_right_val%20%2B%201)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20t4_colors%5Bt4_i%5D%20%3D%20'lightblue'%0A%20%20%20%20%20%20%20%20t4_colors%5Bt4_mid_val%5D%20%3D%20'yellow'%0A%20%20%20%20%20%20%20%20if%20t4_mid_val%20%3D%3D%20t4_idx%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20t4_colors%5Bt4_mid_val%5D%20%3D%20'lime'%0A%0A%20%20%20%20%20%20%20%20t4_ax.bar(range(len(t4_arr))%2C%20t4_arr%2C%20color%3Dt4_colors%2C%20edgecolor%3D'black')%0A%20%20%20%20%20%20%20%20t4_ax.set_xlim(-0.5%2C%20len(t4_arr)%20-%200.5)%0A%20%20%20%20%20%20%20%20t4_ax.set_ylabel('Value')%0A%20%20%20%20%20%20%20%20t4_ax.set_title(f'Step%20%7Bt4_step%20%2B%201%7D%3A%20Check%20middle%5B%7Bt4_mid_val%7D%5D%3D%7Bt4_mid_arr%7D%20%7C%20'%20%2B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20(f'Found!'%20if%20t4_mid_arr%20%3D%3D%20t4_target%20else%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'Too%20%7B%22small%22%20if%20t4_mid_arr%20%3C%20t4_target%20else%20%22large%22%7D%2C%20search%20%7B%22right%22%20if%20t4_mid_arr%20%3C%20t4_target%20else%20%22left%22%7D'))%0A%20%20%20%20%20%20%20%20t4_ax.grid(True%2C%20alpha%3D0.3%2C%20axis%3D'y')%0A%0A%20%20%20%20%20%20%20%20%23%20Add%20index%20labels%0A%20%20%20%20%20%20%20%20for%20t4_j%20in%20range(len(t4_arr))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20t4_ax.text(t4_j%2C%20-2%2C%20str(t4_j)%2C%20ha%3D'center'%2C%20fontsize%3D8)%0A%0A%20%20%20%20plt.xlabel('Array%20Index')%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20plt.show()%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Task%204%20Results%0A%0A%20%20%20%20**Array%3A**%20%60%7Bt4_arr.tolist()%7D%60%20%20%0A%20%20%20%20**Searching%20for%3A**%20%60%7Bt4_target%7D%60%20%20%0A%0A%20%20%20%20**Number%20of%20steps%3A**%20%7Blen(t4_search_steps)%7D%20%20%0A%20%20%20%20**Comparisons%3A**%20%7Blen(t4_search_steps)%7D%20(vs%20%7Blen(t4_arr)%7D%20max%20for%20linear%20search)%0A%0A%20%20%20%20**Search%20Process%3A**%0A%20%20%20%20%7Bchr(10).join(%5Bf%22Step%20%7Bi%2B1%7D%3A%20Checked%20index%20%7Bs%5B1%5D%7D%20(value%3D%7Bs%5B3%5D%7D)%22%20for%20i%2C%20s%20in%20enumerate(t4_search_steps)%5D)%7D%0A%0A%20%20%20%20The%20visualization%20shows%20how%20binary%20search%20eliminates%20half%20the%20search%20space%20at%20each%20step.%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%205%3A%20Binary%20Search%20(Recursive)%0A%20%20%20%20Implement%20the%20Recursive%20Binary%20Search%20Algorithm%20for%20a%20sorted%20input%20array.%0A%0A%20%20%20%20**Algorithm%3A**%20Same%20as%20iterative%20binary%20search%20but%20implemented%20using%20recursion.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20binSearchRec(arr%2C%20left%2C%20right%2C%20val)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Binary%20search%20algorithm%20(recursive).%0A%20%20%20%20Returns%20the%20index%20of%20val%20in%20sorted%20arr%2C%20or%20-1%20if%20not%20found.%0A%20%20%20%20%22%22%22%0A%20%20%20%20if%20left%20%3E%20right%3A%0A%20%20%20%20%20%20%20%20return%20-1%0A%0A%20%20%20%20mid%20%3D%20(left%20%2B%20right)%20%2F%2F%202%0A%0A%20%20%20%20if%20arr%5Bmid%5D%20%3D%3D%20val%3A%0A%20%20%20%20%20%20%20%20return%20mid%0A%20%20%20%20elif%20arr%5Bmid%5D%20%3C%20val%3A%0A%20%20%20%20%20%20%20%20return%20binSearchRec(arr%2C%20mid%20%2B%201%2C%20right%2C%20val)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20return%20binSearchRec(arr%2C%20left%2C%20mid%20-%201%2C%20val)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20np%2C%20plt)%3A%0A%20%20%20%20%23%20Test%20recursive%20binary%20search%0A%20%20%20%20t5_arr%20%3D%20np.array(%5B1%2C%202%2C%203%2C%204%2C%205%2C%207%2C%208%2C%2010%2C%2012%2C%2015%2C%2018%2C%2020%5D)%0A%20%20%20%20t5_target%20%3D%207%0A%20%20%20%20t5_idx%20%3D%20binSearchRec(t5_arr%2C%200%2C%20len(t5_arr)%20-%201%2C%20t5_target)%0A%0A%20%20%20%20%23%20Visualize%20the%20array%20with%20result%0A%20%20%20%20t5_fig%2C%20t5_ax%20%3D%20plt.subplots(figsize%3D(12%2C%204))%0A%20%20%20%20t5_colors%20%3D%20%5B'lightblue'%20if%20t5_i%20!%3D%20t5_idx%20else%20'lime'%20for%20t5_i%20in%20range(len(t5_arr))%5D%0A%20%20%20%20t5_bars%20%3D%20t5_ax.bar(range(len(t5_arr))%2C%20t5_arr%2C%20color%3Dt5_colors%2C%20edgecolor%3D'black'%2C%20linewidth%3D1.5)%0A%0A%20%20%20%20%23%20Highlight%20the%20found%20element%0A%20%20%20%20if%20t5_idx%20!%3D%20-1%3A%0A%20%20%20%20%20%20%20%20t5_ax.annotate(f'Found!%5CnValue%3A%20%7Bt5_arr%5Bt5_idx%5D%7D%5CnIndex%3A%20%7Bt5_idx%7D'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xy%3D(t5_idx%2C%20t5_arr%5Bt5_idx%5D)%2C%20xytext%3D(t5_idx%2C%20t5_arr%5Bt5_idx%5D%20%2B%204)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ha%3D'center'%2C%20fontsize%3D11%2C%20fontweight%3D'bold'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bbox%3Ddict(boxstyle%3D'round%2Cpad%3D0.5'%2C%20facecolor%3D'yellow'%2C%20alpha%3D0.7)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20arrowprops%3Ddict(arrowstyle%3D'-%3E'%2C%20lw%3D2%2C%20color%3D'red'))%0A%0A%20%20%20%20t5_ax.set_xlabel('Array%20Index'%2C%20fontsize%3D12)%0A%20%20%20%20t5_ax.set_ylabel('Value'%2C%20fontsize%3D12)%0A%20%20%20%20t5_ax.set_title(f'Recursive%20Binary%20Search%3A%20Finding%20%7Bt5_target%7D'%2C%20fontsize%3D14%2C%20fontweight%3D'bold')%0A%20%20%20%20t5_ax.grid(True%2C%20alpha%3D0.3%2C%20axis%3D'y')%0A%0A%20%20%20%20%23%20Add%20index%20labels%0A%20%20%20%20for%20t5_i%2C%20t5_bar%20in%20enumerate(t5_bars)%3A%0A%20%20%20%20%20%20%20%20t5_height%20%3D%20t5_bar.get_height()%0A%20%20%20%20%20%20%20%20t5_ax.text(t5_bar.get_x()%20%2B%20t5_bar.get_width()%2F2.%2C%20-1.5%2C%20f'%7Bt5_i%7D'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ha%3D'center'%2C%20va%3D'top'%2C%20fontsize%3D9%2C%20color%3D'gray')%0A%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20plt.show()%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Task%205%20Results%0A%0A%20%20%20%20**Array%3A**%20%60%7Bt5_arr.tolist()%7D%60%20%20%0A%20%20%20%20**Searching%20for%3A**%20%60%7Bt5_target%7D%60%20%20%0A%20%20%20%20**Found%20at%20index%3A**%20%60%7Bt5_idx%7D%60%20%20%0A%0A%0A%20%20%20%20**Recursive%20vs%20Iterative%3A**%20Both%20implementations%20produce%20the%20same%20result%20but%20use%20different%20%0A%20%20%20%20approaches.%20Recursive%20binary%20search%20is%20more%20elegant%20but%20uses%20stack%20space%20for%20each%20recursive%20call.%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Performance%20Comparison%3A%20Linear%20vs%20Binary%20Search%0A%20%20%20%20Let's%20compare%20the%20performance%20of%20all%20three%20search%20methods.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20np%2C%20plt%2C%20time)%3A%0A%20%20%20%20%23%20Performance%20comparison%0A%20%20%20%20perf_sizes%20%3D%20%5B100%2C%20500%2C%201000%2C%202000%2C%205000%2C%2010000%5D%0A%20%20%20%20perf_lin_times%20%3D%20%5B%5D%0A%20%20%20%20perf_bin_times%20%3D%20%5B%5D%0A%20%20%20%20perf_binrec_times%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20perf_size%20in%20perf_sizes%3A%0A%20%20%20%20%20%20%20%20%23%20Average%20over%20100%20runs%20for%20each%20size%0A%20%20%20%20%20%20%20%20perf_lin_avg%20%3D%200%0A%20%20%20%20%20%20%20%20perf_bin_avg%20%3D%200%0A%20%20%20%20%20%20%20%20perf_binrec_avg%20%3D%200%0A%0A%20%20%20%20%20%20%20%20for%20_%20in%20range(100)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_arr%20%3D%20np.arange(perf_size)%0A%20%20%20%20%20%20%20%20%20%20%20%20np.random.shuffle(perf_arr)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_target%20%3D%20np.random.randint(0%2C%20perf_size)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Linear%20search%20(unsorted)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_start%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20%20%20%20%20linSearch(perf_arr%2C%20perf_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_lin_avg%20%2B%3D%20time.perf_counter()%20-%20perf_start%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Binary%20search%20(sorted)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_sorted_arr%20%3D%20np.sort(perf_arr)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_start%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20%20%20%20%20binSearch(perf_sorted_arr%2C%20perf_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_bin_avg%20%2B%3D%20time.perf_counter()%20-%20perf_start%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Recursive%20binary%20search%20(sorted)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_start%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20%20%20%20%20binSearchRec(perf_sorted_arr%2C%200%2C%20len(perf_sorted_arr)%20-%201%2C%20perf_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20perf_binrec_avg%20%2B%3D%20time.perf_counter()%20-%20perf_start%0A%0A%20%20%20%20%20%20%20%20perf_lin_times.append(perf_lin_avg%20%2F%20100%20*%201e6)%20%20%23%20Convert%20to%20microseconds%0A%20%20%20%20%20%20%20%20perf_bin_times.append(perf_bin_avg%20%2F%20100%20*%201e6)%0A%20%20%20%20%20%20%20%20perf_binrec_times.append(perf_binrec_avg%20%2F%20100%20*%201e6)%0A%0A%20%20%20%20%23%20Visualization%0A%20%20%20%20perf_fig%2C%20(perf_ax1%2C%20perf_ax2)%20%3D%20plt.subplots(1%2C%202%2C%20figsize%3D(16%2C%206))%0A%0A%20%20%20%20%23%20Linear%20scale%0A%20%20%20%20perf_ax1.plot(perf_sizes%2C%20perf_lin_times%2C%20'o-'%2C%20label%3D'Linear%20Search'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax1.plot(perf_sizes%2C%20perf_bin_times%2C%20's-'%2C%20label%3D'Binary%20Search%20(Iterative)'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax1.plot(perf_sizes%2C%20perf_binrec_times%2C%20'%5E-'%2C%20label%3D'Binary%20Search%20(Recursive)'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax1.set_xlabel('Array%20Size'%2C%20fontsize%3D12)%0A%20%20%20%20perf_ax1.set_ylabel('Average%20Time%20(%CE%BCs)'%2C%20fontsize%3D12)%0A%20%20%20%20perf_ax1.set_title('Search%20Algorithm%20Performance%20Comparison'%2C%20fontsize%3D14%2C%20fontweight%3D'bold')%0A%20%20%20%20perf_ax1.legend(fontsize%3D11)%0A%20%20%20%20perf_ax1.grid(True%2C%20alpha%3D0.3)%0A%0A%20%20%20%20%23%20Log%20scale%0A%20%20%20%20perf_ax2.loglog(perf_sizes%2C%20perf_lin_times%2C%20'o-'%2C%20label%3D'Linear%20Search%20O(n)'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax2.loglog(perf_sizes%2C%20perf_bin_times%2C%20's-'%2C%20label%3D'Binary%20Search%20O(log%20n)'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax2.loglog(perf_sizes%2C%20perf_binrec_times%2C%20'%5E-'%2C%20label%3D'Binary%20Search%20Rec%20O(log%20n)'%2C%20linewidth%3D2%2C%20markersize%3D8)%0A%20%20%20%20perf_ax2.set_xlabel('Array%20Size%20(log%20scale)'%2C%20fontsize%3D12)%0A%20%20%20%20perf_ax2.set_ylabel('Average%20Time%20(%CE%BCs%2C%20log%20scale)'%2C%20fontsize%3D12)%0A%20%20%20%20perf_ax2.set_title('Performance%20Comparison%20(Log-Log%20Scale)'%2C%20fontsize%3D14%2C%20fontweight%3D'bold')%0A%20%20%20%20perf_ax2.legend(fontsize%3D11)%0A%20%20%20%20perf_ax2.grid(True%2C%20alpha%3D0.3%2C%20which%3D'both')%0A%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20plt.show()%0A%0A%20%20%20%20%23%20Create%20comparison%20table%0A%20%20%20%20perf_comparison_data%20%3D%20%5B%5D%0A%20%20%20%20for%20perf_i%2C%20perf_size%20in%20enumerate(perf_sizes)%3A%0A%20%20%20%20%20%20%20%20perf_speedup%20%3D%20perf_lin_times%5Bperf_i%5D%20%2F%20perf_bin_times%5Bperf_i%5D%0A%20%20%20%20%20%20%20%20perf_comparison_data.append(%5Bperf_size%2C%20f'%7Bperf_lin_times%5Bperf_i%5D%3A.2f%7D'%2C%20f'%7Bperf_bin_times%5Bperf_i%5D%3A.2f%7D'%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%7Bperf_binrec_times%5Bperf_i%5D%3A.2f%7D'%2C%20f'%7Bperf_speedup%3A.1f%7Dx'%5D)%0A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Performance%20Comparison%20Results%0A%0A%20%20%20%20%7C%20Array%20Size%20%7C%20Linear%20(%CE%BCs)%20%7C%20Binary%20Iter%20(%CE%BCs)%20%7C%20Binary%20Rec%20(%CE%BCs)%20%7C%20Speedup%20%7C%0A%20%20%20%20%7C------------%7C-------------%7C------------------%7C-----------------%7C---------%7C%0A%20%20%20%20%7Bchr(10).join(%5Bf%22%7C%20%7Brow%5B0%5D%7D%20%7C%20%7Brow%5B1%5D%7D%20%7C%20%7Brow%5B2%5D%7D%20%7C%20%7Brow%5B3%5D%7D%20%7C%20%7Brow%5B4%5D%7D%20%7C%22%20for%20row%20in%20perf_comparison_data%5D)%7D%0A%0A%20%20%20%20**Key%20Observations%3A**%0A%20%20%20%201.%20**Linear%20Search%3A**%20O(n)%20complexity%20-%20time%20grows%20linearly%20with%20array%20size%0A%20%20%20%202.%20**Binary%20Search%3A**%20O(log%20n)%20complexity%20-%20much%20faster%20for%20large%20arrays%0A%20%20%20%203.%20**Recursive%20vs%20Iterative%3A**%20Both%20have%20similar%20performance%2C%20recursive%20has%20slight%20overhead%0A%20%20%20%204.%20**Speedup%3A**%20Binary%20search%20becomes%20increasingly%20advantageous%20as%20array%20size%20grows%0A%0A%20%20%20%20**Note%3A**%20Binary%20search%20requires%20the%20array%20to%20be%20sorted%2C%20while%20linear%20search%20works%20on%20any%20array.%0A%20%20%20%20%22%22%22%0A%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Interactive%20Search%20Tool%0A%20%20%20%20Test%20the%20search%20algorithms%20with%20your%20own%20data!%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20ui_arr_text%20%3D%20mo.ui.text_area(%0A%20%20%20%20%20%20%20%20label%3D%22Enter%20array%20(comma%2Fspace%20separated)%22%2C%0A%20%20%20%20%20%20%20%20value%3D%2215%2C%203%2C%208%2C%2022%2C%2010%2C%206%2C%201%2C%2019%2C%2025%2C%2012%22%2C%0A%20%20%20%20)%0A%20%20%20%20ui_val%20%3D%20mo.ui.number(label%3D%22Value%20to%20search%22%2C%20value%3D10)%0A%20%20%20%20ui_method%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20label%3D%22Search%20method%22%2C%0A%20%20%20%20%20%20%20%20options%3D%5B%22Linear%22%2C%20%22Binary%20(iterative)%22%2C%20%22Binary%20(recursive)%22%5D%2C%0A%20%20%20%20%20%20%20%20value%3D%22Linear%22%2C%0A%20%20%20%20)%0A%20%20%20%20mo.vstack(%5Bui_arr_text%2C%20ui_val%2C%20ui_method%5D)%0A%20%20%20%20return%20ui_arr_text%2C%20ui_method%2C%20ui_val%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20plt%2C%20time%2C%20ui_arr_text%2C%20ui_method%2C%20ui_val)%3A%0A%20%20%20%20import%20re%0A%0A%20%20%20%20ui_arr%20%3D%20%5Bint(x)%20for%20x%20in%20re.findall(r%22-%3F%5Cd%2B%22%2C%20ui_arr_text.value)%5D%0A%20%20%20%20ui_target%20%3D%20int(ui_val.value)%0A%0A%20%20%20%20if%20not%20ui_arr%3A%0A%20%20%20%20%20%20%20%20_result%20%3D%20mo.md(%22%20Please%20enter%20a%20valid%20array.%22)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%23%20Perform%20search%0A%20%20%20%20%20%20%20%20ui_start%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20if%20ui_method.value%20%3D%3D%20%22Linear%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_idx%20%3D%20linSearch(ui_arr%2C%20ui_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_used%20%3D%20ui_arr%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_sorted%20%3D%20False%0A%20%20%20%20%20%20%20%20elif%20ui_method.value%20%3D%3D%20%22Binary%20(iterative)%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_used%20%3D%20sorted(ui_arr)%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_idx%20%3D%20binSearch(ui_used%2C%20ui_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_sorted%20%3D%20True%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_used%20%3D%20sorted(ui_arr)%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_idx%20%3D%20binSearchRec(ui_used%2C%200%2C%20len(ui_used)%20-%201%2C%20ui_target)%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_sorted%20%3D%20True%0A%20%20%20%20%20%20%20%20ui_end%20%3D%20time.perf_counter()%0A%20%20%20%20%20%20%20%20ui_elapsed%20%3D%20ui_end%20-%20ui_start%0A%0A%20%20%20%20%20%20%20%20%23%20Visualize%0A%20%20%20%20%20%20%20%20ui_fig%2C%20ui_ax%20%3D%20plt.subplots(figsize%3D(14%2C%205))%0A%0A%20%20%20%20%20%20%20%20ui_colors%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20ui_i%20in%20range(len(ui_used))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20ui_i%20%3D%3D%20ui_idx%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ui_colors.append('lime')%20%20%23%20Found%0A%20%20%20%20%20%20%20%20%20%20%20%20elif%20ui_sorted%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ui_colors.append('lightblue')%20%20%23%20Sorted%20array%0A%20%20%20%20%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ui_colors.append('coral')%20%20%23%20Unsorted%20array%0A%0A%20%20%20%20%20%20%20%20ui_bars%20%3D%20ui_ax.bar(range(len(ui_used))%2C%20ui_used%2C%20color%3Dui_colors%2C%20edgecolor%3D'black'%2C%20linewidth%3D1.5)%0A%0A%20%20%20%20%20%20%20%20if%20ui_idx%20!%3D%20-1%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_ax.annotate(f'%E2%9C%93%20Found%20at%20index%20%7Bui_idx%7D'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xy%3D(ui_idx%2C%20ui_used%5Bui_idx%5D)%2C%20xytext%3D(ui_idx%2C%20ui_used%5Bui_idx%5D%20%2B%20max(ui_used)*0.1)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ha%3D'center'%2C%20fontsize%3D12%2C%20fontweight%3D'bold'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20bbox%3Ddict(boxstyle%3D'round%2Cpad%3D0.5'%2C%20facecolor%3D'yellow'%2C%20alpha%3D0.8)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20arrowprops%3Ddict(arrowstyle%3D'-%3E'%2C%20lw%3D2%2C%20color%3D'darkgreen'))%0A%0A%20%20%20%20%20%20%20%20ui_ax.set_xlabel('Array%20Index'%2C%20fontsize%3D12)%0A%20%20%20%20%20%20%20%20ui_ax.set_ylabel('Value'%2C%20fontsize%3D12)%0A%20%20%20%20%20%20%20%20ui_title%20%3D%20f'%7Bui_method.value%7D%20Search%20for%20value%20%7Bui_target%7D'%0A%20%20%20%20%20%20%20%20if%20ui_sorted%20and%20ui_method.value%20!%3D%20%22Linear%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_title%20%2B%3D%20'%20(Array%20Sorted)'%0A%20%20%20%20%20%20%20%20ui_ax.set_title(ui_title%2C%20fontsize%3D14%2C%20fontweight%3D'bold')%0A%20%20%20%20%20%20%20%20ui_ax.grid(True%2C%20alpha%3D0.3%2C%20axis%3D'y')%0A%0A%20%20%20%20%20%20%20%20%23%20Add%20index%20labels%0A%20%20%20%20%20%20%20%20for%20ui_j%20in%20range(len(ui_used))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20ui_ax.text(ui_j%2C%20-max(ui_used)*0.05%2C%20str(ui_j)%2C%20ha%3D'center'%2C%20fontsize%3D9%2C%20color%3D'gray')%0A%0A%20%20%20%20%20%20%20%20plt.tight_layout()%0A%20%20%20%20%20%20%20%20plt.show()%0A%0A%20%20%20%20%20%20%20%20ui_status%20%3D%20%22%E2%9C%93%20Found%22%20if%20ui_idx%20!%3D%20-1%20else%20%22%E2%9C%97%20Not%20Found%22%0A%20%20%20%20%20%20%20%20_result%20%3D%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22%22%22%0A%20%20%20%20%23%23%23%20Interactive%20Search%20Result%0A%0A%20%20%20%20**Method%3A**%20%7Bui_method.value%7D%20%20%0A%20%20%20%20**Original%20array%3A**%20%60%7Bui_arr%7D%60%20%20%0A%20%20%20%20**Array%20used%3A**%20%60%7Bui_used%7D%60%20%7B'(sorted)'%20if%20ui_sorted%20else%20'(original%20order)'%7D%20%20%0A%20%20%20%20**Value%20searched%3A**%20%60%7Bui_target%7D%60%20%20%0A%20%20%20%20**Result%3A**%20%7Bui_status%7D%20%20%0A%20%20%20%20**Index%3A**%20%60%7Bui_idx%7D%60%20%20%0A%20%20%20%20**Time%20elapsed%3A**%20%60%7Bui_elapsed*1e6%3A.3f%7D%60%20microseconds%0A%0A%20%20%20%20%7B'**Verification%3A**%20Value%20at%20index%20%3D%20%60'%20%2B%20str(ui_used%5Bui_idx%5D)%20%2B%20'%60%20%E2%9C%93'%20if%20ui_idx%20!%3D%20-1%20else%20'**Note%3A**%20Value%20not%20found%20in%20array'%7D%0A%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20_result%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.18.1",
+            "serverToken": "unused",
+            "config": {"ai": {"models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "above", "code_editor_font_size": 21, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "dark"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": true},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
