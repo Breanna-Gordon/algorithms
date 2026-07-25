@@ -1,0 +1,11 @@
+body.light-theme,
+body.dark.dark-theme {
+  background-color: black !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* Optional: style headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
