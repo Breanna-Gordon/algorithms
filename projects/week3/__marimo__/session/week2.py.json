@@ -1,0 +1,267 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.18.1"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "b73fbb0a7b5bdbc4488b69147cf2a799",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "e85cc3fe3e30a63423fe12148e82b8a0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"task-1-insertion-sort\">Task 1: Insertion sort</h3>\n<span class=\"paragraph\">From the discussion in class, implement insertion sort.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "968bf5b2c42b282a0ac33fc75e5322ec",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[1, 1, 2, 3, 5, 12, 13, 34, 24524]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "d23fe2fb6ef9db0a4f3cab60e526144c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"task-2\">Task 2:</h3>\n<span class=\"paragraph\">Calculate the time that Insertion Sort takes to sort an array of 1000 random elements.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "601916751c73fcb2688bb175f874b850",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-callout-output data-html='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Hint: Use the &lt;em&gt;time&lt;/em&gt; library and &lt;em&gt;time.time()&lt;/em&gt; method to get the instant time of execution&lt;/span&gt;&lt;/span&gt;&quot;' data-kind='&quot;neutral&quot;'></marimo-callout-output>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "fcfb38d4ab2b5d2bd915b860a37af359",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'arr' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "fd42c5d61869553b34adc2106910b028",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"task-3-bubble-sort\">Task 3: Bubble sort</h3>\n<span class=\"paragraph\">Now implement Bubble Sort</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "2d1fefd82838451d16589477b6f2bd2e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "360220a1631655df2e98a86a7d918869",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[1, 1, 2, 3, 4, 4, 13, 43, 424]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "ff5882de7cc0bd02bc8a0bf45d9b7aea",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><hr /></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "979f3c840958f7bcc7c3a4e6bfa8da53",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"final-task-for-next-week\">Final Task (for next week)</h3>\n<span class=\"paragraph\">Build an interactive visualiser of sorting algorithms.</span>\n<span class=\"paragraph\">Requirements:</span>\n<ul>\n<li>Choose between 3 algorithms: Bubble, Insertion, and a third of your choice (Selection).</li>\n<li>Press <strong>Reset</strong> to restart with a new random array.</li>\n<li>Press <strong>Increment</strong> to run the next step.</li>\n<li>Colour the sorted portion differently.</li>\n</ul>\n<span class=\"paragraph\">Extra:</span>\n<ul>\n<li>For bubble sort, colour recently swapped bars a different colour.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "d262f8b957153cba52239ed9eb15b304",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'dropdown' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'next_button' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'reset_button' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "gOwM",
+      "code_hash": "79552e26256f64e66787d3e68d7ede40",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'dropdown' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'next_button' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'reset_button' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "35f854cbc9dec7dbf90a3e7e69dc7ad4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "526cc7a3324213202259c8c25ab7a227",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "Name `reset_button` is not defined. It was expected to be defined in ",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\DPR\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">139</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">eval</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">last_expr</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\DPR\\AppData\\Local\\Temp\\marimo_17068\\__marimo__cell_nWHF_.py&quot;</span>, line <span class=\"m\">13</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">reset_button</span><span class=\"o\">.</span><span class=\"n\">value</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name &#39;reset_button&#39; is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "iLit",
+      "code_hash": "6de464c5f248a80a42ed0c8e73f341f0",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'arr' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "783c0b85d0b37929b23fddbf4f31fc22",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "Name `controls` is not defined. It was expected to be defined in ",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\DPR\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">139</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">eval</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">last_expr</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\DPR\\AppData\\Local\\Temp\\marimo_17068\\__marimo__cell_ZHCJ_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">controls</span>  <span class=\"c1\"># show controls at the end too (handy if you scroll)</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name &#39;controls&#39; is not defined</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    }
+  ]
+}
