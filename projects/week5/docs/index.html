@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        var scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          var element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          var hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          var newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>week5</title>
+    <script type="module" crossorigin src="./assets/index-D_l-X6Gn.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DrOAYyMx.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-DZLz74EQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-cj45iF1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-bbSa6V1W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-B585XJK6.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-BjyRIiB0.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-srqCRIcI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-ChS5GBa2.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BlAkgCmw.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-BaXqCYqP.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-C-HcgP3A.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-BxvS_drY.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-C3DbbTE3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C8L1g4FL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DjFD6uqw.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-qhKOrN4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-C3lT2mrt.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-D2K3AXi3.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-GjRGzRTx.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-BZzIne4N.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DPrt9GJd.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-D5Z9rM2X.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-D4FHE--3.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-DxkXZaQt.js">
+    <link rel="modulepreload" crossorigin href="./assets/jotai-CqcPj6qO.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-L2NCWzlc.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-JtDUKn_v.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-DfSRWBS2.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-U2NFpcFA.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BaKzT0lw.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-oIXZIVkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-BumILI4b.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DvFyyQ0g.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-xTSywenE.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-CSTolK5a.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSlice-B27Cqkm6.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-CPHpt5EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Rh0PP8AP.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-C7xY7zs_.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-BJLAGM8G.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-Czo8nniw.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CRhq8yNT.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-BVB3VlsI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CcxW2rNb.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BiJechkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-JSI5Ub3m.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-Ccjmqswm.js">
+    <link rel="modulepreload" crossorigin href="./assets/connection-9kD-dTJL.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DNmDtTkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-DYNQ6-Fr.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-Dmpo08fh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BhO6Skm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DYRcKBTi.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-nXbuW0eA.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-hfg5F1cQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BzGULjtt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-4dBKvAyu.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-0fLgeFYh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dg2hoRfc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BIwaxZLx.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-p3EifZIQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-Cm5h4Epc.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-DDpPg0Qh.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-CJyAPkYT.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-CIKnF2iY.js">
+    <link rel="modulepreload" crossorigin href="./assets/toNumber-B2sDWAxt.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-B6JN1xKT.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DEligtiB.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-Dibvs7y1.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-DI1fWf7x.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-CJaEi7_U.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CeDLVlyC.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BFNVm4a_.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CeCEf8EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Cf8AdHpz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-Bc3t2abM.js">
+    <link rel="modulepreload" crossorigin href="./assets/lazy-C9W0-DeZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-6gZ00BOD.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cf6SJD9T.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-UbHGVTRZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DCTaBKUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-Di3J3oYn.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DwXLP_VL.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CxCw9oQX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-ClIOAWpQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BjCf8IUS.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CSz2fa9C.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-iPaBBhYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-CWS6NbZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-8H_iASaM.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-B4wenCLd.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DLOryQh1.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-ClGQ4GXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D5-sZD73.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DY4s_wkY.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-hfBoJmYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D_bGND83.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-ffUzGr5X.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-ODI3-5mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CysUGjt6.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BKJuA7HR.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-5y3x0_Ja.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BlRyYfZp.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-KxLnFZmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-B62m-yTZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-CXTmbRd-.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-Cy78x1lY.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-BVYGX4Ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BdiVNqB7.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-C2UxG4br.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BLJxco2q.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-missing-import-C21Sf8A6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CpUo9WyH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-Bl5E4Sdk.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CmIpJ80x.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Blvf_Trz.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dr-5EPUQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-4lRYVxu8.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-ClM1rWQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-B43jkoR_.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-B0oHN5Qo.js">
+    <link rel="modulepreload" crossorigin href="./assets/shim-CmijwmU8.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-juEDJvh4.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-EzlYz0hD.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-D6cn-CSb.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-D2bcOLFs.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-DBEwDXZO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BY77p5Y8.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-CZ1Fqm86.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-i48JTlkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/Output-C35CXkvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/name-cell-input-Dm0PF-vI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useHotkey-BBy_zgts.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CQqxjtPE.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0W-62VK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DA4REUWb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CTnCzwDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BeLp8J28.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CT07wNjy.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CcT9aH0f.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cyd6BKf3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D6YDRgIP.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-fgvVNt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D2OZ4af5.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cep6eaBU.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CG6nuuxF.js">
+    <link rel="modulepreload" crossorigin href="./assets/apl-B3qFo22I.js">
+    <link rel="modulepreload" crossorigin href="./assets/asciiarmor-BeSUfcJj.js">
+    <link rel="modulepreload" crossorigin href="./assets/asn1-Yuw4PYDQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/brainfuck-ONQfYmGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/clike-BYwnXoSp.js">
+    <link rel="modulepreload" crossorigin href="./assets/clojure-D0qS3s8l.js">
+    <link rel="modulepreload" crossorigin href="./assets/cmake-DrUW7k4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/cobol-CTy-rAxC.js">
+    <link rel="modulepreload" crossorigin href="./assets/coffeescript-DvX85jdj.js">
+    <link rel="modulepreload" crossorigin href="./assets/commonlisp-rN2-4tA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/crystal-DH9HaNMr.js">
+    <link rel="modulepreload" crossorigin href="./assets/css-BWSZbBOG.js">
+    <link rel="modulepreload" crossorigin href="./assets/cypher-CN0hHtlQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/d-CfFhByTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/diff-D5KX9jWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dtd-CAOt54Lh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dylan-BRjSQyPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ecl-BFmhHLwk.js">
+    <link rel="modulepreload" crossorigin href="./assets/eiffel-C-yEc4lk.js">
+    <link rel="modulepreload" crossorigin href="./assets/elm-D-xosfDF.js">
+    <link rel="modulepreload" crossorigin href="./assets/erlang-DwS6VO1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/simple-mode-iIH2XKLC.js">
+    <link rel="modulepreload" crossorigin href="./assets/factor-BAvqFhQd.js">
+    <link rel="modulepreload" crossorigin href="./assets/forth-M-b7RVCY.js">
+    <link rel="modulepreload" crossorigin href="./assets/fortran-BY42hR-9.js">
+    <link rel="modulepreload" crossorigin href="./assets/gas-DUer3zP4.js">
+    <link rel="modulepreload" crossorigin href="./assets/gherkin-BOmBFtxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/groovy-CYRk_Zq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/haskell-fLeayyju.js">
+    <link rel="modulepreload" crossorigin href="./assets/haxe-DiJvQ3PF.js">
+    <link rel="modulepreload" crossorigin href="./assets/idl-D0PcccZ6.js">
+    <link rel="modulepreload" crossorigin href="./assets/javascript-oC9cmYGe.js">
+    <link rel="modulepreload" crossorigin href="./assets/julia-z0xq3uqV.js">
+    <link rel="modulepreload" crossorigin href="./assets/livescript-BbVvVfSY.js">
+    <link rel="modulepreload" crossorigin href="./assets/lua-CtEmKXsU.js">
+    <link rel="modulepreload" crossorigin href="./assets/mathematica-B-SjlQIm.js">
+    <link rel="modulepreload" crossorigin href="./assets/mbox-BdnWvTJv.js">
+    <link rel="modulepreload" crossorigin href="./assets/mirc-Cyycx3am.js">
+    <link rel="modulepreload" crossorigin href="./assets/mllike-DSB5KObs.js">
+    <link rel="modulepreload" crossorigin href="./assets/modelica-DIZcE54y.js">
+    <link rel="modulepreload" crossorigin href="./assets/mscgen-MISBZbzR.js">
+    <link rel="modulepreload" crossorigin href="./assets/mumps-Cnu1tNUa.js">
+    <link rel="modulepreload" crossorigin href="./assets/nsis-BjqFSJO3.js">
+    <link rel="modulepreload" crossorigin href="./assets/ntriples-2rre165b.js">
+    <link rel="modulepreload" crossorigin href="./assets/octave-C7u5CeUZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/oz-D5aE2uST.js">
+    <link rel="modulepreload" crossorigin href="./assets/pascal-DTApZM3o.js">
+    <link rel="modulepreload" crossorigin href="./assets/perl-Ckgh9LJK.js">
+    <link rel="modulepreload" crossorigin href="./assets/pig-jAl9a1Kh.js">
+    <link rel="modulepreload" crossorigin href="./assets/powershell-C_IKzlOl.js">
+    <link rel="modulepreload" crossorigin href="./assets/properties-BdVxDpDJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/protobuf-DLu_SUI6.js">
+    <link rel="modulepreload" crossorigin href="./assets/pug-B4oU-GIl.js">
+    <link rel="modulepreload" crossorigin href="./assets/puppet-CShRizHW.js">
+    <link rel="modulepreload" crossorigin href="./assets/python-CV8UgSMV.js">
+    <link rel="modulepreload" crossorigin href="./assets/q-D2OTJZH4.js">
+    <link rel="modulepreload" crossorigin href="./assets/r-DRqIAgj1.js">
+    <link rel="modulepreload" crossorigin href="./assets/rpm-BStFD27m.js">
+    <link rel="modulepreload" crossorigin href="./assets/ruby-C37hkPS4.js">
+    <link rel="modulepreload" crossorigin href="./assets/sas-CCEIl8BG.js">
+    <link rel="modulepreload" crossorigin href="./assets/scheme-B0jflgrk.js">
+    <link rel="modulepreload" crossorigin href="./assets/shell-Cq7B0hFW.js">
+    <link rel="modulepreload" crossorigin href="./assets/sieve-DS0lS4kt.js">
+    <link rel="modulepreload" crossorigin href="./assets/smalltalk-HHM53Uii.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparql-BMqtnWzI.js">
+    <link rel="modulepreload" crossorigin href="./assets/stylus-Br2gMpMI.js">
+    <link rel="modulepreload" crossorigin href="./assets/swift-BJ8qi_zI.js">
+    <link rel="modulepreload" crossorigin href="./assets/tcl-D0knbOX7.js">
+    <link rel="modulepreload" crossorigin href="./assets/textile-DrRQSuh3.js">
+    <link rel="modulepreload" crossorigin href="./assets/toml-C2kDGfZi.js">
+    <link rel="modulepreload" crossorigin href="./assets/troff-2dFxqWQa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-cfg-CBXajWEo.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-Cj4sIofh.js">
+    <link rel="modulepreload" crossorigin href="./assets/turtle-CDdPtp5F.js">
+    <link rel="modulepreload" crossorigin href="./assets/vb-CtEhAMYU.js">
+    <link rel="modulepreload" crossorigin href="./assets/vbscript-B0nzdgzL.js">
+    <link rel="modulepreload" crossorigin href="./assets/velocity-DR7TSall.js">
+    <link rel="modulepreload" crossorigin href="./assets/verilog-MmKxT9bW.js">
+    <link rel="modulepreload" crossorigin href="./assets/vhdl-0jJrpQNA.js">
+    <link rel="modulepreload" crossorigin href="./assets/webidl-D9f20BkN.js">
+    <link rel="modulepreload" crossorigin href="./assets/xquery-B0eSGN9q.js">
+    <link rel="modulepreload" crossorigin href="./assets/yacas-BS613OH9.js">
+    <link rel="modulepreload" crossorigin href="./assets/z80-CJYC52xh.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DIjo4soQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CVHckof0.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DHSHWgjO.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-DVXuVt6V.js">
+    <link rel="modulepreload" crossorigin href="./assets/ConsoleOutput-BatcZKPn.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiJ1mek2.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BW6MxaEk.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-y1F5Z2Y5.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-Dr7zIwOF.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-Bn-XGt0r.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BsAvcxPB.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DboMQFVg.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-C1ukCxS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-BiyTaqjl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-D5gLerI4.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-CpOepRkn.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-CMwEtzs3.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BtLtbyWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CjyEJrMA.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-CAcr7Wct.js">
+    <link rel="modulepreload" crossorigin href="./assets/_toKey-BbfXi6wG.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CAH-_bH2.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-BzRjRyGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BNbDM0Mz.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-GfTQvjwT.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CBaILRil.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-BXa7vpHk.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-Dm03euNS.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-text-DIapyZTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-GcyCxgZE.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-C9Bp8jO8.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-g86spPBc.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DUdOrxYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-Cnpv5prF.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-x-D7HuxVjU.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CFRARokg.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CZtzD7wN.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-CJBhqjDq.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-4Jci0WvL.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-C9lQcGwc.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-eYq94Ok6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-EIl6UkD1.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-Dv1hfKnk.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-CHCkBeAL.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BEPT_zOX.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-lvJcGOAk.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-umA55KZB.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-CQF_Dkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DgwLm9Ah.js">
+    <link rel="modulepreload" crossorigin href="./assets/_basePickBy-DQPJpG_l.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DJvAHg2T.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-CCW7bjI-.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-DKjdQj9o.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe--Wj1_HOr.js">
+    <link rel="modulepreload" crossorigin href="./assets/send-BChAQAUR.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DEnZI2dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-CN8Z3_-5.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-BGycXz6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-DtrWSlr6.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BvrC6Bsv.css">
+    <link rel="stylesheet" crossorigin href="./assets/dist-CUNt1nyj.css">
+    <link rel="stylesheet" crossorigin href="./assets/Output-Br1mGKlI.css">
+    <link rel="stylesheet" crossorigin href="./assets/ConsoleOutput-BFFTcC5Y.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-xc2Ie6gg.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.18.1%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20plotly.graph_objects%20as%20go%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%201%3A%0A%20%20%20%20Implement%20the%20Binary%20Search%20Algorithm%20for%20a%20sorted%20input%20array.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20a%20%3D%20%5B0%2C2%2C3%5D%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20binSearch(arr%2C%20target)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Iterative%20binary%20search%20algorithm%20for%20sorted%20arrays.%0A%20%20%20%20Returns%20the%20index%20of%20target%20if%20found%2C%20-1%20otherwise.%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Initialize%20left%20and%20right%20pointers%20to%20cover%20the%20entire%20array%0A%20%20%20%20left%20%3D%200%0A%20%20%20%20right%20%3D%20len(arr)%20-%201%0A%0A%20%20%20%20%23%20Continue%20searching%20while%20the%20search%20space%20is%20valid%0A%20%20%20%20while%20left%20%3C%3D%20right%3A%0A%20%20%20%20%20%20%20%20%23%20Calculate%20middle%20index%20to%20divide%20search%20space%20in%20half%0A%20%20%20%20%20%20%20%20%23%20Using%20%2F%2F%20for%20integer%20division%20to%20avoid%20floating%20point%0A%20%20%20%20%20%20%20%20mid%20%3D%20(left%20%2B%20right)%20%2F%2F%202%0A%0A%20%20%20%20%20%20%20%20%23%20Check%20if%20we%20found%20the%20target%20at%20the%20middle%20position%0A%20%20%20%20%20%20%20%20if%20arr%5Bmid%5D%20%3D%3D%20target%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mid%20%20%23%20Return%20the%20index%20where%20target%20was%20found%0A%0A%20%20%20%20%20%20%20%20%23%20If%20target%20is%20smaller%20than%20middle%20element%2C%20search%20left%20half%0A%20%20%20%20%20%20%20%20elif%20target%20%3C%20arr%5Bmid%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%20%20%23%20Narrow%20search%20space%20to%20left%20of%20mid%0A%0A%20%20%20%20%20%20%20%20%23%20If%20target%20is%20larger%20than%20middle%20element%2C%20search%20right%20half%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%20%20%23%20Narrow%20search%20space%20to%20right%20of%20mid%0A%0A%20%20%20%20%23%20Target%20not%20found%20in%20array%2C%20return%20-1%20to%20indicate%20failure%0A%20%20%20%20return%20-1%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20binSearch(%5B1%2C3%2C44%2C535%2C2552%2C14123%2C452525%2C2412414%2C141414144%5D%2C44)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%202%3A%0A%20%20%20%20Implement%20the%20Recursive%20Binary%20Search%20Algorithm%20for%20a%20sorted%20input%20array.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20binSearchRec(arr%2Ctarget%2Cleft%2Cright)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Recursive%20binary%20search%20implementation.%0A%20%20%20%20Parameters%3A%20arr%20(sorted%20array)%2C%20target%20(value%20to%20find)%2C%20left%2Fright%20(search%20boundaries)%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Base%20case%3A%20check%20if%20search%20space%20is%20still%20valid%0A%20%20%20%20if%20(left%20%3C%3D%20right)%3A%0A%20%20%20%20%20%20%20%20%23%20Calculate%20middle%20index%20of%20current%20search%20space%0A%20%20%20%20%20%20%20%20mid%20%3D%20(left%20%2B%20right)%20%2F%2F%202%0A%0A%20%20%20%20%20%20%20%20%23%20Base%20case%3A%20target%20found%20at%20middle%20position%0A%20%20%20%20%20%20%20%20if%20(target%20%3D%3D%20arr%5Bmid%5D)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mid%20%20%23%20Success!%20Return%20the%20index%0A%0A%20%20%20%20%20%20%20%20%23%20Recursive%20case%3A%20target%20is%20in%20left%20half%0A%20%20%20%20%20%20%20%20elif%20(target%20%3C%20arr%5Bmid%5D)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right%20%3D%20mid%20-%201%20%20%23%20Update%20right%20boundary%20to%20exclude%20mid%20and%20right%20half%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Recursively%20search%20the%20left%20half%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20binSearchRec(arr%2Ctarget%2Cleft%2Cright)%0A%0A%20%20%20%20%20%20%20%20%23%20Recursive%20case%3A%20target%20is%20in%20right%20half%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left%20%3D%20mid%20%2B%201%20%20%23%20Update%20left%20boundary%20to%20exclude%20mid%20and%20left%20half%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Recursively%20search%20the%20right%20half%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20binSearchRec(arr%2Ctarget%2Cleft%2Cright)%0A%0A%20%20%20%20%23%20Base%20case%3A%20search%20space%20exhausted%2C%20target%20not%20found%0A%20%20%20%20return%20-1%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20binSearchRec(%5B1%2C3%2C44%2C535%2C2552%2C14123%2C452525%2C2412414%2C141414144%5D%2C46%2C0%2C8)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%203%3A%0A%20%20%20%20Implement%20Merge%20Sort%20algorithm%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20mergeSort(A)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Recursive%20merge%20sort%20algorithm%20-%20divides%20array%20and%20merges%20sorted%20halves.%0A%20%20%20%20Time%20complexity%3A%20O(n%20log%20n)%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Base%20case%3A%20array%20with%201%20or%200%20elements%20is%20already%20sorted%0A%20%20%20%20if(len(A)%3E1)%3A%0A%20%20%20%20%20%20%20%20%23%20Find%20the%20middle%20point%20to%20divide%20array%20into%20two%20halves%0A%20%20%20%20%20%20%20%20mid%20%3D%20(len(A)%20%2F%2F%202)%0A%0A%20%20%20%20%20%20%20%20%23%20Divide%3A%20split%20array%20into%20left%20half%20(B)%20and%20right%20half%20(C)%0A%20%20%20%20%20%20%20%20B%20%3D%20A%5B%3Amid%5D%20%20%20%20%20%20%23%20Left%20half%20from%20start%20to%20mid%20(exclusive)%0A%20%20%20%20%20%20%20%20C%20%3D%20A%5Bmid%3A%5D%20%20%20%20%20%20%23%20Right%20half%20from%20mid%20to%20end%0A%0A%20%20%20%20%20%20%20%20%23%20Conquer%3A%20recursively%20sort%20both%20halves%0A%20%20%20%20%20%20%20%20B%20%3D%20mergeSort(B)%20%20%23%20Sort%20left%20half%0A%20%20%20%20%20%20%20%20C%20%3D%20mergeSort(C)%20%20%23%20Sort%20right%20half%0A%0A%20%20%20%20%20%20%20%20%23%20Combine%3A%20merge%20the%20two%20sorted%20halves%20back%20together%0A%20%20%20%20%20%20%20%20A%20%3D%20mergeArrays(B%2CC)%0A%0A%20%20%20%20%23%20Return%20the%20sorted%20array%0A%20%20%20%20return%20A%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mergeSort(%5B31%2C4245%2C2%2C32%2C32%2C424%2C2%2C312%2C42%2C42%2C2%2C24%2C56%2C7%5D)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20mergeArrays(A%2CB)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Merges%20two%20sorted%20arrays%20into%20one%20sorted%20array.%0A%20%20%20%20This%20is%20the%20'combine'%20step%20of%20merge%20sort.%0A%20%20%20%20%22%22%22%0A%20%20%20%20S%20%3D%20%5B%5D%20%20%23%20Result%20array%20to%20store%20merged%20elements%0A%0A%20%20%20%20%23%20Compare%20elements%20from%20both%20arrays%20and%20add%20smaller%20one%20to%20result%0A%20%20%20%20while(len(A)%3E0%20and%20len(B)%3E0)%3A%0A%20%20%20%20%20%20%20%20if%20A%5B0%5D%20%3C%20B%5B0%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20S.append(A%5B0%5D)%20%20%23%20A's%20first%20element%20is%20smaller%2C%20add%20it%0A%20%20%20%20%20%20%20%20%20%20%20%20A%20%3D%20A%5B1%3A%5D%20%20%20%20%20%20%20%23%20Remove%20first%20element%20from%20A%20(shift%20left)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20S.append(B%5B0%5D)%20%20%23%20B's%20first%20element%20is%20smaller%20or%20equal%2C%20add%20it%0A%20%20%20%20%20%20%20%20%20%20%20%20B%20%3D%20B%5B1%3A%5D%20%20%20%20%20%20%20%23%20Remove%20first%20element%20from%20B%20(shift%20left)%0A%0A%20%20%20%20%23%20After%20one%20array%20is%20exhausted%2C%20append%20remaining%20elements%20from%20A%0A%20%20%20%20while(len(A)%3E0)%3A%0A%20%20%20%20%20%20%20%20S.append(A%5B0%5D)%0A%20%20%20%20%20%20%20%20A%20%3D%20A%5B1%3A%5D%0A%0A%20%20%20%20%23%20Append%20any%20remaining%20elements%20from%20B%0A%20%20%20%20while(len(B)%3E0)%3A%0A%20%20%20%20%20%20%20%20S.append(B%5B0%5D)%0A%20%20%20%20%20%20%20%20B%20%3D%20B%5B1%3A%5D%0A%0A%20%20%20%20%23%20Return%20the%20merged%20sorted%20array%0A%20%20%20%20return%20S%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20mergeArrays(%5B1%2C4%2C6%2C7%2C8%2C9%2C10%5D%2C%5B2%2C5%2C67%2C88%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%204%3A%0A%20%20%20%20Implement%20Quicksort%20(last%20element%20as%20a%20pivot)%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20quicksort(arr)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Quicksort%20algorithm%20using%20last%20element%20as%20pivot.%0A%20%20%20%20Divides%20array%20into%20elements%20less%20than%20and%20greater%20than%20pivot.%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Base%20case%3A%20arrays%20with%200%20or%201%20element%20are%20already%20sorted%0A%20%20%20%20if%20len(arr)%3C%3D1%3A%0A%20%20%20%20%20%20%20%20return%20arr%0A%0A%20%20%20%20%23%20Initialize%20partitions%20for%20elements%20smaller%20and%20larger%20than%20pivot%0A%20%20%20%20left%3D%5B%5D%20%20%20%23%20Will%20hold%20elements%20%3C%3D%20pivot%0A%20%20%20%20right%3D%5B%5D%20%20%23%20Will%20hold%20elements%20%3E%20pivot%0A%0A%20%20%20%20%23%20Choose%20last%20element%20as%20pivot%20(partition%20point)%0A%20%20%20%20pivot%20%3D%20arr%5Blen(arr)-1%5D%0A%0A%20%20%20%20%23%20Partition%3A%20compare%20each%20element%20(except%20pivot)%20with%20pivot%0A%20%20%20%20for%20i%20in%20range(len(arr)-1)%3A%0A%20%20%20%20%20%20%20%20if%20(arr%5Bi%5D%3C%3Dpivot)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20left.append(arr%5Bi%5D)%20%20%20%23%20Element%20is%20smaller%2Fequal%2C%20goes%20to%20left%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20right.append(arr%5Bi%5D)%20%20%23%20Element%20is%20larger%2C%20goes%20to%20right%0A%0A%20%20%20%20%23%20Recursively%20sort%20left%20partition%2C%20concatenate%20with%20pivot%2C%20then%20right%20partition%0A%20%20%20%20%23%20This%20works%20because%20pivot%20is%20now%20in%20its%20final%20sorted%20position%0A%20%20%20%20return%20quicksort(left)%20%2B%20%5Bpivot%5D%20%2B%20quicksort(right)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20quicksort(%5B314%2C31%2C4%2C636%2C74%2C6%2C25%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Final%20Task%0A%20%20%20%20Below%20you%20will%20find%20a%20series%20of%20cells%20that%20help%20you%20to%20plot%20a%20tree%20structure.%20A%20tree%20structure%20here%20is%20something%20like%20the%20following%3A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20exampleTree%20%3D%20%5B(0%2C%20None%2C%20%5B8%2C%203%2C%205%2C%204%2C%207%2C%206%2C%201%2C%202%5D)%2C%20(1%2C%200%2C%20%5B8%2C%203%2C%205%2C%204%5D)%2C(2%2C0%2C%5B7%2C6%2C1%2C2%5D)%20%2C(3%2C1%2C%5B8%2C3%5D)%2C(4%2C1%2C%5B5%2C4%5D)%2C(5%2C%202%2C%20%5B7%2C6%5D)%5D%0A%20%20%20%20return%20(exampleTree%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Now%20we%20can%20use%20the%20helper%20functions%20to%20plot%20this%20tree%20structure%20for%20different%20iterations%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(build_graph%2C%20draw_tree%2C%20exampleTree)%3A%0A%20%20%20%20F%20%3D%20build_graph(exampleTree%2C3)%0A%20%20%20%20draw_tree(F)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20r%22%22%22%0A%20%20%20%20%20%20%20%20---------------------%0A%20%20%20%20%20%20%20%20The%20following%20code%20was%20generated%20initially%20with%20GPT-5%20plus%20iterations.%20The%20code%20generated%20all%20the%20helper%20functions%20defined%20in%20the%20first%20cell.%20The%20author%20modified%20it%20to%20be%20displayed%20and%20plotted%20as%20a%20tree%20structure%20using%20networkx%20library.%20%20%0A%0A%20%20%20%20%20%20%20%20----------%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20).callout()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20import%20networkx%20as%20nx%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%0A%0A%20%20%20%20def%20build_graph(tree%2C%20step)%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Converts%20tree%20structure%20into%20NetworkX%20directed%20graph%20for%20visualization.%0A%20%20%20%20%20%20%20%20Only%20includes%20nodes%20up%20to%20the%20specified%20step%20(for%20progressive%20reveal).%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20G%20%3D%20nx.DiGraph()%20%20%23%20Create%20directed%20graph%20(parent%20-%3E%20child%20relationships)%0A%0A%20%20%20%20%20%20%20%20%23%20Process%20each%20node%20up%20to%20current%20step%0A%20%20%20%20%20%20%20%20for%20node%2C%20parent%2C%20arr%20in%20tree%5B%3Astep%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Add%20node%20with%20its%20array%20as%20a%20label%20(for%20display)%0A%20%20%20%20%20%20%20%20%20%20%20%20G.add_node(node%2C%20label%3Dstr(list(arr)))%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Add%20edge%20from%20parent%20to%20this%20node%20(if%20not%20root)%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Root%20node%20has%20parent%3DNone%2C%20so%20skip%20adding%20edge%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20parent%20is%20not%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20G.add_edge(parent%2C%20node)%0A%0A%20%20%20%20%20%20%20%20return%20G%0A%0A%0A%0A%20%20%20%20def%20hierarchy_pos(G%2C%20root%3DNone%2C%20width%3D1.%2C%20vert_gap%3D0.2%2C%20vert_loc%3D0%2C%20xcenter%3D0.5)%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Calculate%20node%20positions%20for%20hierarchical%20tree%20layout.%0A%20%20%20%20%20%20%20%20This%20creates%20the%20top-down%20tree%20structure%20you%20see%20in%20the%20visualization.%0A%0A%20%20%20%20%20%20%20%20Parameters%3A%0A%20%20%20%20%20%20%20%20-%20G%3A%20NetworkX%20graph%0A%20%20%20%20%20%20%20%20-%20width%3A%20horizontal%20space%20allocated%20for%20tree%0A%20%20%20%20%20%20%20%20-%20vert_gap%3A%20vertical%20spacing%20between%20levels%0A%20%20%20%20%20%20%20%20-%20vert_loc%3A%20starting%20vertical%20position%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%23%20Verify%20graph%20is%20actually%20a%20tree%20(no%20cycles)%0A%20%20%20%20%20%20%20%20if%20not%20nx.is_tree(G)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20raise%20TypeError(%22hierarchy_pos%20only%20works%20for%20trees.%22)%0A%0A%20%20%20%20%20%20%20%20%23%20Find%20root%20node%20(node%20with%20no%20incoming%20edges)%0A%20%20%20%20%20%20%20%20if%20root%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20root%20%3D%20next(n%20for%20n%2Cd%20in%20G.in_degree()%20if%20d%3D%3D0)%0A%0A%20%20%20%20%20%20%20%20def%20_hierarchy_pos(G%2C%20node%2C%20left%2C%20right%2C%20vert_loc%2C%20pos)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20Recursive%20helper%20to%20position%20nodes.%0A%20%20%20%20%20%20%20%20%20%20%20%20Children%20are%20evenly%20distributed%20in%20the%20horizontal%20space%20between%20left%20and%20right.%0A%20%20%20%20%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20children%20%3D%20list(G.successors(node))%20%20%23%20Get%20all%20child%20nodes%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Position%20current%20node%20in%20center%20of%20its%20allocated%20space%0A%20%20%20%20%20%20%20%20%20%20%20%20pos%5Bnode%5D%20%3D%20((left%20%2B%20right)%20%2F%202%2C%20vert_loc)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20If%20node%20has%20children%2C%20recursively%20position%20them%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20len(children)%20!%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20dx%20%3D%20(right%20-%20left)%20%2F%20len(children)%20%20%23%20Width%20allocated%20per%20child%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20nextx%20%3D%20left%20%20%23%20Starting%20position%20for%20first%20child%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Position%20each%20child%20in%20its%20allocated%20horizontal%20space%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20child%20in%20children%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20Move%20down%20one%20level%20(vert_loc%20-%20vert_gap)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_hierarchy_pos(G%2C%20child%2C%20nextx%2C%20nextx%20%2B%20dx%2C%20vert_loc%20-%20vert_gap%2C%20pos)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20nextx%20%2B%3D%20dx%20%20%23%20Move%20to%20next%20child's%20space%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20pos%0A%0A%20%20%20%20%20%20%20%20%23%20Start%20recursive%20positioning%20from%20root%0A%20%20%20%20%20%20%20%20return%20_hierarchy_pos(G%2C%20root%2C%200%2C%20width%2C%20vert_loc%2C%20%7B%7D)%0A%0A%0A%20%20%20%20def%20draw_tree(G)%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Renders%20the%20tree%20visualization%20using%20matplotlib%20and%20NetworkX.%0A%20%20%20%20%20%20%20%20Creates%20a%20visual%20diagram%20showing%20the%20algorithm's%20execution%20steps.%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20%23%20Calculate%20hierarchical%20positions%20for%20all%20nodes%0A%20%20%20%20%20%20%20%20pos%20%3D%20hierarchy_pos(G)%20%0A%0A%20%20%20%20%20%20%20%20%23%20Extract%20labels%20(array%20values)%20for%20each%20node%0A%20%20%20%20%20%20%20%20labels%20%3D%20nx.get_node_attributes(G%2C%20%22label%22)%0A%0A%20%20%20%20%20%20%20%20%23%20Create%20matplotlib%20figure%20with%20specified%20size%0A%20%20%20%20%20%20%20%20plt.figure(figsize%3D(5%2C%203))%0A%0A%20%20%20%20%20%20%20%20%23%20Draw%20the%20graph%20with%20specified%20styling%3A%0A%20%20%20%20%20%20%20%20%23%20-%20with_labels%3DTrue%3A%20show%20node%20numbers%0A%20%20%20%20%20%20%20%20%23%20-%20labels%3A%20show%20array%20contents%0A%20%20%20%20%20%20%20%20%23%20-%20font_size%3A%20make%20text%20readable%20but%20not%20too%20large%0A%20%20%20%20%20%20%20%20%23%20-%20node_size%3A%20size%20of%20node%20circles%0A%20%20%20%20%20%20%20%20%23%20-%20node_color%3A%20aesthetic%20choice%20(light%20blue)%0A%20%20%20%20%20%20%20%20nx.draw(%0A%20%20%20%20%20%20%20%20%20%20%20%20G%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20pos%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20with_labels%3DTrue%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20labels%3Dlabels%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20font_size%3D5%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20node_size%3D500%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20node_color%3D%22lightblue%22%2C%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20plt.axis(%22off%22)%20%20%23%20Hide%20axis%20for%20cleaner%20appearance%0A%0A%20%20%20%20%20%20%20%20%23%20Convert%20to%20marimo%20interactive%20plot%0A%20%20%20%20%20%20%20%20drawM%20%3D%20mo.mpl.interactive(plt.gcf())%0A%20%20%20%20%20%20%20%20return%20drawM%0A%20%20%20%20return%20build_graph%2C%20draw_tree%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20arr_input%20%3D%20mo.ui.text(label%3D%22Enter%20array%20(comma-separated)%22%2C%20value%3D%228%2C3%2C5%2C4%2C7%2C6%2C1%2C2%22)%0A%20%20%20%20return%20(arr_input%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20val_input%20%3D%20mo.ui.text(label%3D%22Enter%20value%20to%20search%22%2C%20value%3D%225%22)%0A%20%20%20%20return%20(val_input%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20next_btn%20%3D%20mo.ui.button(label%3D%22Next%20Step%20%22)%0A%20%20%20%20return%20(next_btn%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20reset_btn%20%3D%20mo.ui.button(label%3D%22%20Reset%22)%0A%20%20%20%20return%20(reset_btn%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Create%20state%20management%20for%20binary%20search%20step%20counter%0A%20%20%20%20%23%20get_count()%20retrieves%20current%20step%20number%0A%20%20%20%20%23%20set_count()%20updates%20the%20step%20number%0A%20%20%20%20%23%20Initialized%20to%201%20(showing%20first%20step%20of%20tree)%0A%20%20%20%20get_count%2C%20set_count%20%3D%20mo.state(1)%0A%20%20%20%20return%20get_count%2C%20set_count%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(get_count%2C%20next_btn%2C%20set_count)%3A%0A%20%20%20%20%23%20When%20%22Next%20Step%22%20button%20is%20clicked%3A%0A%20%20%20%20next_btn%0A%20%20%20%20%23%20Increment%20the%20step%20counter%20by%201%0A%20%20%20%20%23%20This%20reveals%20the%20next%20node%20in%20the%20tree%20visualization%0A%20%20%20%20set_count(get_count()%2B1)%0A%20%20%20%20print(get_count())%20%20%23%20Debug%3A%20print%20current%20step%20to%20console%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(reset_btn%2C%20set_count)%3A%0A%20%20%20%20%23%20When%20%22Reset%22%20button%20is%20clicked%3A%0A%20%20%20%20reset_btn%0A%20%20%20%20%23%20Set%20step%20counter%20back%20to%200%0A%20%20%20%20%23%20This%20hides%20the%20tree%20and%20allows%20user%20to%20restart%20visualization%0A%20%20%20%20set_count(0)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(arr_input)%3A%0A%20%20%20%20%23%20Parse%20the%20comma-separated%20array%20input%20from%20the%20user%0A%20%20%20%20arr_text%20%3D%20arr_input.value%0A%0A%20%20%20%20%23%20Convert%20string%20to%20list%20of%20integers%3A%0A%20%20%20%20%23%201.%20Split%20by%20comma%3A%20%228%2C3%2C5%2C4%22%20-%3E%20%5B%228%22%2C%223%22%2C%225%22%2C%224%22%5D%0A%20%20%20%20%23%202.%20Strip%20whitespace%20from%20each%20element%0A%20%20%20%20%23%203.%20Check%20if%20it's%20a%20valid%20digit%20with%20isdigit()%0A%20%20%20%20%23%204.%20Convert%20to%20integer%20with%20int()%0A%20%20%20%20%23%20This%20filtering%20prevents%20errors%20from%20invalid%20input%20like%20letters%20or%20empty%20strings%0A%20%20%20%20arr%20%3D%20%5Bint(x.strip())%20for%20x%20in%20arr_text.split(%22%2C%22)%20if%20x.strip().isdigit()%5D%0A%20%20%20%20return%20(arr%2C)%0A%0A%0A%40app.function%0Adef%20tree_bin_search(arr%2C%20val%2C%20tree%20%3D%20%5B%5D%2Cid%3D0%2Cparent%3DNone)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Creates%20a%20tree%20structure%20to%20visualize%20binary%20search%20process.%0A%20%20%20%20Each%20node%20in%20the%20tree%20represents%20a%20search%20step%20with%20the%20current%20subarray.%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Add%20current%20node%20to%20tree%3A%20(node_id%2C%20parent_id%2C%20current_array)%0A%20%20%20%20%23%20This%20records%20the%20state%20at%20this%20step%20of%20the%20search%0A%20%20%20%20tree.append((id%2Cparent%2Carr))%0A%0A%20%20%20%20%23%20Continue%20only%20if%20array%20has%20more%20than%201%20element%0A%20%20%20%20if%20(len(arr)%3E1)%3A%0A%20%20%20%20%20%20%20%20%23%20Calculate%20middle%20index%20to%20compare%20with%20target%20value%0A%20%20%20%20%20%20%20%20mid%20%3D%20len(arr)%20%2F%2F%202%0A%0A%20%20%20%20%20%20%20%20%23%20Case%201%3A%20target%20is%20smaller%20than%20middle%20element%0A%20%20%20%20%20%20%20%20%23%20Search%20continues%20in%20LEFT%20half%20of%20array%0A%20%20%20%20%20%20%20%20if%20(val%20%3C%20arr%5Bmid%5D)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20subarr%20%3D%20arr%5B%3Amid%5D%20%20%23%20Create%20left%20subarray%20(before%20mid)%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Recursive%20call%3A%20new%20node%20(id%2B1)%20with%20current%20node%20as%20parent%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20tree_bin_search(subarr%2Cval%2C%20tree%2Cid%20%2B%201%2Cid)%0A%0A%20%20%20%20%20%20%20%20%23%20Case%202%3A%20target%20is%20larger%20than%20middle%20element%0A%20%20%20%20%20%20%20%20%23%20Search%20continues%20in%20RIGHT%20half%20of%20array%0A%20%20%20%20%20%20%20%20elif%20(val%20%3E%20arr%5Bmid%5D)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20subarr%20%3D%20arr%5Bmid%3A%5D%20%20%23%20Create%20right%20subarray%20(from%20mid%20onward)%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Recursive%20call%3A%20explore%20right%20branch%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20tree_bin_search(subarr%2Cval%2C%20tree%2Cid%20%2B%201%2Cid)%0A%0A%20%20%20%20%20%20%20%20%23%20Case%203%3A%20target%20equals%20middle%20element%20-%20FOUND!%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20subarr%20%3D%20%5Barr%5Bmid%5D%5D%20%20%23%20Create%20final%20node%20with%20just%20the%20found%20element%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20One%20more%20recursive%20call%20to%20add%20the%20final%20node%20to%20tree%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20tree_bin_search(subarr%2Cval%2C%20tree%2Cid%20%2B%201%2Cid)%0A%0A%20%20%20%20%23%20Base%20case%3A%20array%20has%201%20element%2C%20search%20is%20complete%0A%20%20%20%20%23%20Return%20the%20complete%20tree%20structure%0A%20%20%20%20return%20tree%0A%0A%0A%40app.function%0Adef%20tree_merge_sort(arr%2C%20tree%3D%5B%5D%2C%20id%3D0%2C%20parent%3DNone)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Creates%20a%20tree%20structure%20for%20Merge%20Sort%20algorithm%20visualization.%0A%20%20%20%20Unlike%20binary%20search%20(which%20only%20opens%20ONE%20branch)%2C%20merge%20sort%20opens%20TWO%20branches.%0A%20%20%20%20This%20represents%20the%20divide-and-conquer%20approach%3A%20split%20array%20in%20half%20repeatedly.%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Add%20current%20node%20to%20tree%20with%20its%20array%20state%0A%20%20%20%20tree.append((id%2C%20parent%2C%20arr))%0A%0A%20%20%20%20%23%20Only%20split%20if%20array%20has%20more%20than%201%20element%0A%20%20%20%20if%20len(arr)%20%3E%201%3A%0A%20%20%20%20%20%20%20%20%23%20Calculate%20middle%20point%20to%20divide%20array%0A%20%20%20%20%20%20%20%20mid%20%3D%20len(arr)%20%2F%2F%202%0A%20%20%20%20%20%20%20%20left_arr%20%3D%20arr%5B%3Amid%5D%20%20%20%20%23%20Left%20half%0A%20%20%20%20%20%20%20%20right_arr%20%3D%20arr%5Bmid%3A%5D%20%20%20%23%20Right%20half%0A%0A%20%20%20%20%20%20%20%20%23%20IMPORTANT%3A%20We%20need%20to%20calculate%20correct%20IDs%20for%20right%20subtree%0A%20%20%20%20%20%20%20%20%23%20The%20right%20subtree's%20ID%20must%20come%20AFTER%20all%20nodes%20in%20left%20subtree%0A%20%20%20%20%20%20%20%20%23%20Otherwise%20node%20IDs%20would%20overlap%20and%20cause%20visualization%20errors%0A%20%20%20%20%20%20%20%20left_tree_size%20%3D%20count_merge_nodes(left_arr)%0A%0A%20%20%20%20%20%20%20%20%23%20Recursively%20create%20LEFT%20subtree%0A%20%20%20%20%20%20%20%20%23%20Left%20child%20gets%20next%20ID%20(id%20%2B%201)%2C%20and%20current%20node%20as%20parent%0A%20%20%20%20%20%20%20%20tree_merge_sort(left_arr%2C%20tree%2C%20id%20%2B%201%2C%20id)%0A%0A%20%20%20%20%20%20%20%20%23%20Recursively%20create%20RIGHT%20subtree%0A%20%20%20%20%20%20%20%20%23%20Right%20child%20ID%20must%20skip%20all%20left%20subtree%20nodes%0A%20%20%20%20%20%20%20%20%23%20Formula%3A%20id%20%2B%201%20(for%20this%20level)%20%2B%20left_tree_size%20(all%20left%20descendants)%0A%20%20%20%20%20%20%20%20tree_merge_sort(right_arr%2C%20tree%2C%20id%20%2B%201%20%2B%20left_tree_size%2C%20id)%0A%0A%20%20%20%20%23%20Return%20complete%20tree%20showing%20all%20divide%20steps%0A%20%20%20%20return%20tree%0A%0A%0A%40app.function%0Adef%20count_merge_nodes(arr)%3A%0A%20%20%20%20%22%22%22%0A%20%20%20%20Helper%20function%20to%20count%20how%20many%20nodes%20will%20be%20in%20a%20merge%20sort%20subtree.%0A%20%20%20%20This%20is%20crucial%20for%20assigning%20correct%20IDs%20in%20the%20tree%20structure.%0A%0A%20%20%20%20Why%20we%20need%20this%3A%20In%20merge%20sort%2C%20both%20left%20AND%20right%20subtrees%20are%20created.%0A%20%20%20%20If%20we%20don't%20calculate%20the%20size%20of%20the%20left%20subtree%20first%2C%20the%20right%20subtree%0A%20%20%20%20will%20have%20overlapping%20node%20IDs%20with%20the%20left%20subtree.%0A%0A%20%20%20%20Example%3A%20If%20left%20subtree%20has%203%20nodes%20(IDs%201%2C2%2C3)%2C%20right%20subtree%20must%20start%20at%20ID%204.%0A%20%20%20%20%22%22%22%0A%20%20%20%20%23%20Base%20case%3A%20single%20element%20%3D%201%20node%0A%20%20%20%20if%20len(arr)%20%3C%3D%201%3A%0A%20%20%20%20%20%20%20%20return%201%0A%0A%20%20%20%20%23%20Recursive%20case%3A%20%0A%20%20%20%20%23%20Total%20nodes%20%3D%201%20(current%20node)%20%2B%20nodes%20in%20left%20subtree%20%2B%20nodes%20in%20right%20subtree%0A%20%20%20%20mid%20%3D%20len(arr)%20%2F%2F%202%0A%20%20%20%20return%201%20%2B%20count_merge_nodes(arr%5B%3Amid%5D)%20%2B%20count_merge_nodes(arr%5Bmid%3A%5D)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Binary%20Search%20Visualization%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20arr%2C%0A%20%20%20%20arr_input%2C%0A%20%20%20%20build_graph%2C%0A%20%20%20%20draw_tree%2C%0A%20%20%20%20get_count%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20next_btn%2C%0A%20%20%20%20reset_btn%2C%0A%20%20%20%20val_input%2C%0A)%3A%0A%20%20%20%20%23%20MAIN%20TASK%3A%20Modified%20to%20use%20val_input%20instead%20of%20fixed%20value%205%0A%0A%20%20%20%20%23%20Parse%20the%20search%20value%20from%20user%20input%2C%20default%20to%205%20if%20invalid%0A%20%20%20%20search_val%20%3D%20int(val_input.value)%20if%20val_input.value.strip().isdigit()%20else%205%0A%0A%20%20%20%20%23%20Generate%20the%20complete%20binary%20search%20tree%20for%20visualization%0A%20%20%20%20%23%20tree%3D%5B%5D%20creates%20a%20fresh%20tree%20for%20each%20execution%0A%20%20%20%20tree%20%3D%20tree_bin_search(arr%2C%20search_val%2C%20tree%3D%5B%5D)%0A%0A%20%20%20%20%23%20Determine%20which%20step%20to%20display%20(limited%20by%20total%20tree%20length)%0A%20%20%20%20%23%20get_count()%20tracks%20how%20many%20times%20%22Next%22%20button%20was%20clicked%0A%20%20%20%20step%20%3D%20min(get_count()%2C%20len(tree))%0A%0A%20%20%20%20%23%20Build%20the%20graph%20structure%20for%20the%20current%20step%0A%20%20%20%20%23%20This%20only%20includes%20nodes%20up%20to%20the%20current%20step%0A%20%20%20%20G%20%3D%20build_graph(tree%2C%20step)%0A%0A%20%20%20%20%23%20Create%20the%20user%20interface%20with%20vertical%20stack%20layout%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20%23%20Top%20row%3A%20all%20input%20controls%20in%20horizontal%20layout%0A%20%20%20%20%20%20%20%20mo.hstack(%5Barr_input%2C%20val_input%2C%20next_btn%2C%20reset_btn%5D)%2C%0A%20%20%20%20%20%20%20%20%23%20Display%20current%20step%20information%0A%20%20%20%20%20%20%20%20mo.md(f%22%23%23%23%20Binary%20Search%20-%20Step%20%7Bstep%7D%2F%7Blen(tree)%7D%20(Searching%20for%20%7Bsearch_val%7D)%22)%2C%0A%20%20%20%20%20%20%20%20%23%20Render%20the%20tree%20visualization%0A%20%20%20%20%20%20%20%20draw_tree(G)%2C%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Merge%20Sort%20Visualization%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20merge_arr_input%20%3D%20mo.ui.text(label%3D%22Enter%20array%20for%20Merge%20Sort%20(comma-separated)%22%2C%20value%3D%228%2C3%2C5%2C4%2C7%2C6%2C1%2C2%22)%0A%20%20%20%20return%20(merge_arr_input%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20merge_next_btn%20%3D%20mo.ui.button(label%3D%22Next%20Step%20%22)%0A%20%20%20%20return%20(merge_next_btn%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20merge_reset_btn%20%3D%20mo.ui.button(label%3D%22%20Reset%22)%0A%20%20%20%20return%20(merge_reset_btn%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Separate%20state%20management%20for%20merge%20sort%20visualization%0A%20%20%20%20%23%20Independent%20from%20binary%20search%20so%20both%20can%20be%20used%20simultaneously%0A%20%20%20%20%23%20get_merge_count()%20retrieves%20current%20step%0A%20%20%20%20%23%20set_merge_count()%20updates%20current%20step%0A%20%20%20%20get_merge_count%2C%20set_merge_count%20%3D%20mo.state(1)%0A%20%20%20%20return%20get_merge_count%2C%20set_merge_count%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(get_merge_count%2C%20merge_next_btn%2C%20set_merge_count)%3A%0A%20%20%20%20%23%20Handle%20%22Next%20Step%22%20button%20for%20merge%20sort%20visualization%0A%20%20%20%20merge_next_btn%0A%20%20%20%20%23%20Increment%20merge%20sort%20step%20counter%0A%20%20%20%20%23%20Shows%20next%20division%20in%20the%20merge%20sort%20tree%0A%20%20%20%20set_merge_count(get_merge_count()%2B1)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(merge_reset_btn%2C%20set_merge_count)%3A%0A%20%20%20%20%23%20Handle%20%22Reset%22%20button%20for%20merge%20sort%20visualization%0A%20%20%20%20merge_reset_btn%0A%20%20%20%20%23%20Reset%20merge%20sort%20step%20counter%20to%200%0A%20%20%20%20%23%20Clears%20the%20visualization%20so%20user%20can%20start%20over%0A%20%20%20%20set_merge_count(0)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(merge_arr_input)%3A%0A%20%20%20%20%23%20Parse%20user%20input%20for%20merge%20sort%20array%20(same%20process%20as%20binary%20search)%0A%20%20%20%20merge_arr_text%20%3D%20merge_arr_input.value%0A%0A%20%20%20%20%23%20Convert%20comma-separated%20string%20to%20integer%20array%0A%20%20%20%20%23%20Only%20includes%20valid%20integer%20values%2C%20ignores%20invalid%20input%0A%20%20%20%20merge_arr%20%3D%20%5Bint(x.strip())%20for%20x%20in%20merge_arr_text.split(%22%2C%22)%20if%20x.strip().isdigit()%5D%0A%20%20%20%20return%20(merge_arr%2C)%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20build_graph%2C%0A%20%20%20%20draw_tree%2C%0A%20%20%20%20get_merge_count%2C%0A%20%20%20%20merge_arr%2C%0A%20%20%20%20merge_arr_input%2C%0A%20%20%20%20merge_next_btn%2C%0A%20%20%20%20merge_reset_btn%2C%0A%20%20%20%20mo%2C%0A)%3A%0A%20%20%20%20%23%20MAIN%20TASK%3A%20Merge%20Sort%20visualization%20using%20tree_merge_sort%20function%0A%0A%20%20%20%20%23%20Generate%20the%20complete%20merge%20sort%20tree%20structure%0A%20%20%20%20%23%20This%20shows%20ALL%20the%20divisions%20that%20will%20happen%20during%20merge%20sort%0A%20%20%20%20%23%20tree%3D%5B%5D%20ensures%20we%20start%20fresh%20each%20time%0A%20%20%20%20merge_tree%20%3D%20tree_merge_sort(merge_arr%2C%20tree%3D%5B%5D)%0A%0A%20%20%20%20%23%20Control%20which%20step%20of%20the%20algorithm%20to%20display%0A%20%20%20%20%23%20get_merge_count()%20increases%20each%20time%20%22Next%20Step%22%20is%20clicked%0A%20%20%20%20merge_step%20%3D%20min(get_merge_count()%2C%20len(merge_tree))%0A%0A%20%20%20%20%23%20Build%20graph%20showing%20only%20nodes%20up%20to%20current%20step%0A%20%20%20%20%23%20This%20creates%20the%20progressive%20reveal%20effect%20as%20user%20clicks%20%22Next%22%0A%20%20%20%20merge_G%20%3D%20build_graph(merge_tree%2C%20merge_step)%0A%0A%20%20%20%20%23%20Render%20the%20user%20interface%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20%23%20Control%20panel%20with%20input%20field%20and%20buttons%0A%20%20%20%20%20%20%20%20mo.hstack(%5Bmerge_arr_input%2C%20merge_next_btn%2C%20merge_reset_btn%5D)%2C%0A%20%20%20%20%20%20%20%20%23%20Status%20display%20showing%20progress%20through%20algorithm%0A%20%20%20%20%20%20%20%20mo.md(f%22%23%23%23%20Merge%20Sort%20-%20Step%20%7Bmerge_step%7D%2F%7Blen(merge_tree)%7D%22)%2C%0A%20%20%20%20%20%20%20%20%23%20Tree%20visualization%20showing%20divide%20phase%20of%20merge%20sort%0A%20%20%20%20%20%20%20%20draw_tree(merge_G)%2C%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%23%20Tasks%3A%0A%20%20%20%20-%20%20Modify%20the%20previous%20cell%20so%20it%20allows%20the%20user%20to%20input%20the%20value%20to%20search%20for%20(now%20it%20is%20fixed%20to%205)%0A%20%20%20%20-%20%20Create%20a%20new%20function%20%60%60%60tree_merge_sort()%60%60%60.%20This%20function%20is%20similar%20to%20%60%60%60tree_bin_search()%60%60%60%20but%20it%20created%20the%20tree%20for%20a%20Merge%20Sort%20algorithm%20(i.e.%20instead%20of%20only%20opening%20one%20branch%20like%20binary%20search%2C%20now%20it%20always%20open%20two%20branches).%20Use%20the%20same%20helper%20functions%20to%20plot%20the%20merge%20sort%20tree%20for%20each%20iteration.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%23%23%20Extra%20Tasks%20(not%20compulsory%2C%20just%20if%20you%20want%20to%20learn%20more)%3A%0A%20%20%20%20-%20Add%20a%20dropdown%20menu%20that%20allows%20you%20to%20choose%20between%20Binary%20Search%20and%20Mergesort%20and%20then%20it%20shows%20the%20corresponding%20tree.%0A%20%20%20%20-%20Add%20as%20a%20third%20option%20the%20Quicksort%20algorithm%20with%20its%20corresponding%20tree%0A%20%20%20%20-%20Modify%20the%20helper%20functions%20so%20for%20the%20Binary%20search%20algorithm%20it%20displays%20the%20whole%20tree%20(not%20only%20the%20chosen%20left%20or%20right%20child%20node)%2C%20and%20it%20also%20show%20the%20chosen%20path%20(i.e.%20chosen%20nodes)%20with%20a%20different%20colour.%20You%20might%20have%20to%20add%20an%20extra%20attribute%20to%20the%20nodes%20of%20the%20tree%20that%20accounts%20whether%20they%20belong%20to%20the%20path%20or%20not.%20Then%2C%20in%20the%20%60%60%60draw_tree()%60%60%60%20helper%20function%20(particularly%2C%20in%20the%20%60%60%60nx.draw()%60%60%60%20part)%20you%20can%20give%20a%20%60%60%60color%60%60%60%20option%20to%20nodes.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.18.1",
+            "serverToken": "unused",
+            "config": {"ai": {"models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "above", "code_editor_font_size": 21, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "dark"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": true},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
