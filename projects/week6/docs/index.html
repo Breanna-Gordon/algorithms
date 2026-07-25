@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        var scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          var element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          var hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          var newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>week6</title>
+    <script type="module" crossorigin src="./assets/index-D_l-X6Gn.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DrOAYyMx.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-DZLz74EQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-cj45iF1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-bbSa6V1W.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-B585XJK6.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-BjyRIiB0.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-srqCRIcI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-ChS5GBa2.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-BlAkgCmw.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-BaXqCYqP.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-C-HcgP3A.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-BxvS_drY.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-C3DbbTE3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C8L1g4FL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DjFD6uqw.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-qhKOrN4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-C3lT2mrt.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-D2K3AXi3.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-GjRGzRTx.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-BZzIne4N.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DPrt9GJd.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-D5Z9rM2X.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-D4FHE--3.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-DxkXZaQt.js">
+    <link rel="modulepreload" crossorigin href="./assets/jotai-CqcPj6qO.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-L2NCWzlc.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-JtDUKn_v.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-DfSRWBS2.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-U2NFpcFA.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-BaKzT0lw.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-oIXZIVkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-BumILI4b.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DvFyyQ0g.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-xTSywenE.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-CSTolK5a.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSlice-B27Cqkm6.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-CPHpt5EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Rh0PP8AP.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-C7xY7zs_.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-BJLAGM8G.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-Czo8nniw.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CRhq8yNT.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-BVB3VlsI.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CcxW2rNb.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BiJechkS.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-JSI5Ub3m.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-Ccjmqswm.js">
+    <link rel="modulepreload" crossorigin href="./assets/connection-9kD-dTJL.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-DNmDtTkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-DYNQ6-Fr.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-Dmpo08fh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BhO6Skm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DYRcKBTi.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-nXbuW0eA.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-hfg5F1cQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BzGULjtt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-4dBKvAyu.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-0fLgeFYh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dg2hoRfc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BIwaxZLx.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-p3EifZIQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-Cm5h4Epc.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-DDpPg0Qh.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-CJyAPkYT.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-CIKnF2iY.js">
+    <link rel="modulepreload" crossorigin href="./assets/toNumber-B2sDWAxt.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-B6JN1xKT.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-DEligtiB.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-Dibvs7y1.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-DI1fWf7x.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-CJaEi7_U.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CeDLVlyC.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BFNVm4a_.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CeCEf8EV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Cf8AdHpz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-Bc3t2abM.js">
+    <link rel="modulepreload" crossorigin href="./assets/lazy-C9W0-DeZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-6gZ00BOD.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cf6SJD9T.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-UbHGVTRZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DCTaBKUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-Di3J3oYn.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DwXLP_VL.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CxCw9oQX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-ClIOAWpQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-BjCf8IUS.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-CSz2fa9C.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-iPaBBhYk.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-CWS6NbZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-8H_iASaM.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-B4wenCLd.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DLOryQh1.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-ClGQ4GXE.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D5-sZD73.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DY4s_wkY.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-hfBoJmYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D_bGND83.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-ffUzGr5X.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-ODI3-5mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CysUGjt6.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BKJuA7HR.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-5y3x0_Ja.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BlRyYfZp.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-KxLnFZmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-B62m-yTZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-CXTmbRd-.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-Cy78x1lY.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-BVYGX4Ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BdiVNqB7.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-C2UxG4br.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BLJxco2q.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-missing-import-C21Sf8A6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CpUo9WyH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-Bl5E4Sdk.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CmIpJ80x.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Blvf_Trz.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-Dr-5EPUQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-4lRYVxu8.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-ClM1rWQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-B43jkoR_.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-B0oHN5Qo.js">
+    <link rel="modulepreload" crossorigin href="./assets/shim-CmijwmU8.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-juEDJvh4.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-EzlYz0hD.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-D6cn-CSb.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-D2bcOLFs.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-DBEwDXZO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BY77p5Y8.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-CZ1Fqm86.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-i48JTlkp.js">
+    <link rel="modulepreload" crossorigin href="./assets/Output-C35CXkvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/name-cell-input-Dm0PF-vI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useHotkey-BBy_zgts.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CQqxjtPE.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B0W-62VK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DA4REUWb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CTnCzwDO.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BeLp8J28.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CT07wNjy.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CcT9aH0f.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cyd6BKf3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D6YDRgIP.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D-fgvVNt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D2OZ4af5.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cep6eaBU.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CG6nuuxF.js">
+    <link rel="modulepreload" crossorigin href="./assets/apl-B3qFo22I.js">
+    <link rel="modulepreload" crossorigin href="./assets/asciiarmor-BeSUfcJj.js">
+    <link rel="modulepreload" crossorigin href="./assets/asn1-Yuw4PYDQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/brainfuck-ONQfYmGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/clike-BYwnXoSp.js">
+    <link rel="modulepreload" crossorigin href="./assets/clojure-D0qS3s8l.js">
+    <link rel="modulepreload" crossorigin href="./assets/cmake-DrUW7k4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/cobol-CTy-rAxC.js">
+    <link rel="modulepreload" crossorigin href="./assets/coffeescript-DvX85jdj.js">
+    <link rel="modulepreload" crossorigin href="./assets/commonlisp-rN2-4tA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/crystal-DH9HaNMr.js">
+    <link rel="modulepreload" crossorigin href="./assets/css-BWSZbBOG.js">
+    <link rel="modulepreload" crossorigin href="./assets/cypher-CN0hHtlQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/d-CfFhByTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/diff-D5KX9jWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dtd-CAOt54Lh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dylan-BRjSQyPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ecl-BFmhHLwk.js">
+    <link rel="modulepreload" crossorigin href="./assets/eiffel-C-yEc4lk.js">
+    <link rel="modulepreload" crossorigin href="./assets/elm-D-xosfDF.js">
+    <link rel="modulepreload" crossorigin href="./assets/erlang-DwS6VO1i.js">
+    <link rel="modulepreload" crossorigin href="./assets/simple-mode-iIH2XKLC.js">
+    <link rel="modulepreload" crossorigin href="./assets/factor-BAvqFhQd.js">
+    <link rel="modulepreload" crossorigin href="./assets/forth-M-b7RVCY.js">
+    <link rel="modulepreload" crossorigin href="./assets/fortran-BY42hR-9.js">
+    <link rel="modulepreload" crossorigin href="./assets/gas-DUer3zP4.js">
+    <link rel="modulepreload" crossorigin href="./assets/gherkin-BOmBFtxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/groovy-CYRk_Zq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/haskell-fLeayyju.js">
+    <link rel="modulepreload" crossorigin href="./assets/haxe-DiJvQ3PF.js">
+    <link rel="modulepreload" crossorigin href="./assets/idl-D0PcccZ6.js">
+    <link rel="modulepreload" crossorigin href="./assets/javascript-oC9cmYGe.js">
+    <link rel="modulepreload" crossorigin href="./assets/julia-z0xq3uqV.js">
+    <link rel="modulepreload" crossorigin href="./assets/livescript-BbVvVfSY.js">
+    <link rel="modulepreload" crossorigin href="./assets/lua-CtEmKXsU.js">
+    <link rel="modulepreload" crossorigin href="./assets/mathematica-B-SjlQIm.js">
+    <link rel="modulepreload" crossorigin href="./assets/mbox-BdnWvTJv.js">
+    <link rel="modulepreload" crossorigin href="./assets/mirc-Cyycx3am.js">
+    <link rel="modulepreload" crossorigin href="./assets/mllike-DSB5KObs.js">
+    <link rel="modulepreload" crossorigin href="./assets/modelica-DIZcE54y.js">
+    <link rel="modulepreload" crossorigin href="./assets/mscgen-MISBZbzR.js">
+    <link rel="modulepreload" crossorigin href="./assets/mumps-Cnu1tNUa.js">
+    <link rel="modulepreload" crossorigin href="./assets/nsis-BjqFSJO3.js">
+    <link rel="modulepreload" crossorigin href="./assets/ntriples-2rre165b.js">
+    <link rel="modulepreload" crossorigin href="./assets/octave-C7u5CeUZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/oz-D5aE2uST.js">
+    <link rel="modulepreload" crossorigin href="./assets/pascal-DTApZM3o.js">
+    <link rel="modulepreload" crossorigin href="./assets/perl-Ckgh9LJK.js">
+    <link rel="modulepreload" crossorigin href="./assets/pig-jAl9a1Kh.js">
+    <link rel="modulepreload" crossorigin href="./assets/powershell-C_IKzlOl.js">
+    <link rel="modulepreload" crossorigin href="./assets/properties-BdVxDpDJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/protobuf-DLu_SUI6.js">
+    <link rel="modulepreload" crossorigin href="./assets/pug-B4oU-GIl.js">
+    <link rel="modulepreload" crossorigin href="./assets/puppet-CShRizHW.js">
+    <link rel="modulepreload" crossorigin href="./assets/python-CV8UgSMV.js">
+    <link rel="modulepreload" crossorigin href="./assets/q-D2OTJZH4.js">
+    <link rel="modulepreload" crossorigin href="./assets/r-DRqIAgj1.js">
+    <link rel="modulepreload" crossorigin href="./assets/rpm-BStFD27m.js">
+    <link rel="modulepreload" crossorigin href="./assets/ruby-C37hkPS4.js">
+    <link rel="modulepreload" crossorigin href="./assets/sas-CCEIl8BG.js">
+    <link rel="modulepreload" crossorigin href="./assets/scheme-B0jflgrk.js">
+    <link rel="modulepreload" crossorigin href="./assets/shell-Cq7B0hFW.js">
+    <link rel="modulepreload" crossorigin href="./assets/sieve-DS0lS4kt.js">
+    <link rel="modulepreload" crossorigin href="./assets/smalltalk-HHM53Uii.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparql-BMqtnWzI.js">
+    <link rel="modulepreload" crossorigin href="./assets/stylus-Br2gMpMI.js">
+    <link rel="modulepreload" crossorigin href="./assets/swift-BJ8qi_zI.js">
+    <link rel="modulepreload" crossorigin href="./assets/tcl-D0knbOX7.js">
+    <link rel="modulepreload" crossorigin href="./assets/textile-DrRQSuh3.js">
+    <link rel="modulepreload" crossorigin href="./assets/toml-C2kDGfZi.js">
+    <link rel="modulepreload" crossorigin href="./assets/troff-2dFxqWQa.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-cfg-CBXajWEo.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-Cj4sIofh.js">
+    <link rel="modulepreload" crossorigin href="./assets/turtle-CDdPtp5F.js">
+    <link rel="modulepreload" crossorigin href="./assets/vb-CtEhAMYU.js">
+    <link rel="modulepreload" crossorigin href="./assets/vbscript-B0nzdgzL.js">
+    <link rel="modulepreload" crossorigin href="./assets/velocity-DR7TSall.js">
+    <link rel="modulepreload" crossorigin href="./assets/verilog-MmKxT9bW.js">
+    <link rel="modulepreload" crossorigin href="./assets/vhdl-0jJrpQNA.js">
+    <link rel="modulepreload" crossorigin href="./assets/webidl-D9f20BkN.js">
+    <link rel="modulepreload" crossorigin href="./assets/xquery-B0eSGN9q.js">
+    <link rel="modulepreload" crossorigin href="./assets/yacas-BS613OH9.js">
+    <link rel="modulepreload" crossorigin href="./assets/z80-CJYC52xh.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DIjo4soQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CVHckof0.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DHSHWgjO.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-DVXuVt6V.js">
+    <link rel="modulepreload" crossorigin href="./assets/ConsoleOutput-BatcZKPn.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiJ1mek2.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-BW6MxaEk.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-y1F5Z2Y5.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-Dr7zIwOF.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-Bn-XGt0r.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BsAvcxPB.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DboMQFVg.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-C1ukCxS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-BiyTaqjl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-D5gLerI4.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-CpOepRkn.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-CMwEtzs3.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BtLtbyWB.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CjyEJrMA.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-CAcr7Wct.js">
+    <link rel="modulepreload" crossorigin href="./assets/_toKey-BbfXi6wG.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-CAH-_bH2.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-BzRjRyGG.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BNbDM0Mz.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-GfTQvjwT.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CBaILRil.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-BXa7vpHk.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-Dm03euNS.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-text-DIapyZTO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-GcyCxgZE.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-C9Bp8jO8.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-g86spPBc.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DUdOrxYS.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-Cnpv5prF.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-x-D7HuxVjU.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-CFRARokg.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-CZtzD7wN.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-CJBhqjDq.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-4Jci0WvL.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-C9lQcGwc.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-eYq94Ok6.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-EIl6UkD1.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-Dv1hfKnk.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-CHCkBeAL.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BEPT_zOX.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-lvJcGOAk.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-umA55KZB.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-CQF_Dkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DgwLm9Ah.js">
+    <link rel="modulepreload" crossorigin href="./assets/_basePickBy-DQPJpG_l.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DJvAHg2T.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-CCW7bjI-.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-DKjdQj9o.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe--Wj1_HOr.js">
+    <link rel="modulepreload" crossorigin href="./assets/send-BChAQAUR.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DEnZI2dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-CN8Z3_-5.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-BGycXz6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-DtrWSlr6.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-BvrC6Bsv.css">
+    <link rel="stylesheet" crossorigin href="./assets/dist-CUNt1nyj.css">
+    <link rel="stylesheet" crossorigin href="./assets/Output-Br1mGKlI.css">
+    <link rel="stylesheet" crossorigin href="./assets/ConsoleOutput-BFFTcC5Y.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-xc2Ie6gg.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.18.1%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Example%201%3A%20Maxone%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20random%2C%20numpy%20as%20np%2C%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20return%20mo%2C%20np%2C%20plt%2C%20random%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%201%3A%20Initialisation%0A%20%20%20%20Implement%20the%20%60%60%60createInital(nInd%2CnBits)%60%60%60%20function%20that%20creates%20%60%60%60nInd%60%60%60%20arrays%20of%20%60%60%60nBits%60%60%60%20bits%20each%20one%2C%20where%20each%20bit%20is%201%20or%200%20with%2050%25%20chance.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20createInitial(nInd%2C%20nBits)%3A%0A%20%20%20%20%20%20%20%20return%20%5B%5B1%20if%20random.random()%20%3C%200.5%20else%200%20for%20_%20in%20range(nBits)%5D%20for%20_%20in%20range(nInd)%5D%0A%20%20%20%20return%20(createInitial%2C)%0A%0A%0A%40app.cell%0Adef%20_(createInitial)%3A%0A%20%20%20%20createInitial(5%2C%205)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%202%3A%20Evaluation%0A%20%20%20%20Implement%20the%20%60%60%60fitness(individual)%60%60%60%20function%20that%20receives%20an%20array%20%60%60%60individual%60%60%60%20and%20it%20returns%20%60%60%60nOnes%60%60%60%2C%20the%20number%20of%20ones%20that%20the%20array%20contains%20(you%20can%20assume%20the%20array%20only%20contains%20zeros%20or%20ones).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.function%0Adef%20fitness(individual)%3A%0A%20%20%20%20return%20int(sum(individual))%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20print(fitness(%5B1%2C%200%2C%201%2C%200%2C%201%5D))%0A%20%20%20%20print(fitness(%5B1%2C%201%2C%201%2C%201%2C%201%5D))%0A%20%20%20%20print(fitness(%5B0%2C%200%2C%200%2C%200%2C%200%5D))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%203%3A%20Selection%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Implement%20the%20%60%60%60selectThreeWinners(population)%60%60%60%20function%2C%20that%20takes%20as%20an%20input%20the%20whole%20population.%20This%20function%20should%20do%20the%20following%3A%0A%20%20%20%201.%20Select%20randomly%20two%20individuals%20from%20%60%60%60population%60%60%60%2C%20then%20compare%20their%20fitness%20and%20select%20the%20one%20with%20highest%20fitness.%20This%20individual%20is%20called%20%60%60%60firstWinner%60%60%60%0A%20%20%20%202.%20Repeat%20the%20above%20step%20twice%2C%20in%20order%20to%20obtain%20%60%60%60secondWinner%60%60%60%20and%20%60%60%60thirdWinner%60%60%60%0A%20%20%20%203.%20Return%20%60%60%60firstWinner%60%60%60%2C%60%60%60secondWinner%60%60%60%2C%20and%20%60%60%60thirdWinner%60%60%60%0A%0A%20%20%20%20You%20can%20use%20the%20%60%60%60random.sample(population%2Ck)%60%60%60%20for%20randomly%20extract%20%60%60%60k%60%60%60%20elements%20from%20%60%60%60population%60%60%60%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20selectThreeWinners(population)%3A%0A%20%20%20%20%20%20%20%20def%20tournament2(pop)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20a%2C%20b%20%3D%20random.sample(pop%2C%202)%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20a%20if%20fitness(a)%20%3E%3D%20fitness(b)%20else%20b%0A%0A%20%20%20%20%20%20%20%20firstWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20secondWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20thirdWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20return%20firstWinner%2C%20secondWinner%2C%20thirdWinner%0A%20%20%20%20return%20(selectThreeWinners%2C)%0A%0A%0A%40app.cell%0Adef%20_(createInitial%2C%20selectThreeWinners)%3A%0A%20%20%20%20pop_demo%20%3D%20createInitial(10%2C%208)%0A%20%20%20%20w1%2C%20w2%2C%20w3%20%3D%20selectThreeWinners(pop_demo)%0A%0A%20%20%20%20print(%22Population%20(first%203%20individuals)%3A%22)%0A%20%20%20%20print(pop_demo%5B0%5D%2C%20%22fitness%20%3D%22%2C%20fitness(pop_demo%5B0%5D))%0A%20%20%20%20print(pop_demo%5B1%5D%2C%20%22fitness%20%3D%22%2C%20fitness(pop_demo%5B1%5D))%0A%20%20%20%20print(pop_demo%5B2%5D%2C%20%22fitness%20%3D%22%2C%20fitness(pop_demo%5B2%5D))%0A%0A%20%20%20%20print(%22%5CnWinners%3A%22)%0A%20%20%20%20print(%22W1%3A%22%2C%20w1%2C%20%22fitness%20%3D%22%2C%20fitness(w1))%0A%20%20%20%20print(%22W2%3A%22%2C%20w2%2C%20%22fitness%20%3D%22%2C%20fitness(w2))%0A%20%20%20%20print(%22W3%3A%22%2C%20w3%2C%20%22fitness%20%3D%22%2C%20fitness(w3))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%204%3A%20Crossover%0A%20%20%20%20Implement%20the%20%60%60%60crossover(parent1%2Cparent2)%60%60%60%20function%2C%20that%20takes%20as%20an%20input%20two%20individuals%20%60%60%60parent1%60%60%60%20and%20%60%60%60parent2%60%60%60%20and%20returns%20%60%60%60firstChild%60%60%60%20and%20%60%60%60secondChild%60%60%60%20which%20are%20obtained%20with%20the%20following%20procedure%3A%0A%20%20%20%201.%20Create%20a%20random%20crossover%20point%20x%2C%20with%20%60%60%60x%3D%5B1%2Clen(parent1)-1%5D%60%60%60%0A%20%20%20%202.%20Create%20%60%60%60firstChild%60%60%60%2C%20an%20array%20containing%20the%20same%20elements%20from%20%60%60%60parent1%60%60%60%20from%20index%200%20to%20x-1%2C%20and%20containing%20the%20same%20elements%20from%20%60%60%60parent2%60%60%60%20from%20index%20x%20to%20len(parent)-1.%0A%20%20%20%203.%20Create%20%60%60%60secondChild%60%60%60%20as%20the%20inverse%20combination%20from%20%60%60%60firstChild%60%60%60%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20crossover(parent1%2C%20parent2)%3A%0A%20%20%20%20%20%20%20%20n%20%3D%20len(parent1)%0A%20%20%20%20%20%20%20%20x%20%3D%20random.randint(1%2C%20n%20-%201)%0A%20%20%20%20%20%20%20%20firstChild%20%3D%20parent1%5B%3Ax%5D%20%2B%20parent2%5Bx%3A%5D%0A%20%20%20%20%20%20%20%20secondChild%20%3D%20parent2%5B%3Ax%5D%20%2B%20parent1%5Bx%3A%5D%0A%20%20%20%20%20%20%20%20return%20firstChild%2C%20secondChild%0A%20%20%20%20return%20(crossover%2C)%0A%0A%0A%40app.cell%0Adef%20_(crossover)%3A%0A%20%20%20%20p1%20%3D%20%5B1%2C%200%2C%201%2C%201%2C%200%2C%201%2C%200%2C%201%5D%0A%20%20%20%20p2%20%3D%20%5B0%2C%201%2C%200%2C%200%2C%201%2C%200%2C%201%2C%200%5D%0A%20%20%20%20c1%2C%20c2%20%3D%20crossover(p1%2C%20p2)%0A%0A%20%20%20%20print(%22Parent%201%3A%22%2C%20p1%2C%20%22fitness%20%3D%22%2C%20fitness(p1))%0A%20%20%20%20print(%22Parent%202%3A%22%2C%20p2%2C%20%22fitness%20%3D%22%2C%20fitness(p2))%0A%20%20%20%20print(%22Child%201%20%3A%22%2C%20c1%2C%20%22fitness%20%3D%22%2C%20fitness(c1))%0A%20%20%20%20print(%22Child%202%20%3A%22%2C%20c2%2C%20%22fitness%20%3D%22%2C%20fitness(c2))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%205%3A%20Mutation%0A%20%20%20%20Implement%20the%20%60%60%60mutation(individual%2CpMut)%60%60%60%20function%2C%20that%20takes%20as%20an%20input%20an%20array%20%60%60%60individual%60%60%60%20and%20%60%60%60pMut%60%60%60%2C%20the%20probability%20of%20mutation%2C%20and%20for%20each%20element%20of%20%60%60%60individual%60%60%60%20it%20changes%20its%20value%20(from%200%20to%201%20or%20from%201%20to%200)%20with%20probability%20%60%60%60pMut%60%60%60%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20mutation(individual%2C%20pMutation)%3A%0A%20%20%20%20%20%20%20%20out%20%3D%20individual%5B%3A%5D%0A%20%20%20%20%20%20%20%20for%20i%20in%20range(len(out))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20random.random()%20%3C%20pMutation%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20out%5Bi%5D%20%3D%201%20-%20out%5Bi%5D%0A%20%20%20%20%20%20%20%20return%20out%0A%20%20%20%20return%20(mutation%2C)%0A%0A%0A%40app.cell%0Adef%20_(mutation)%3A%0A%20%20%20%20ind%20%3D%20%5B1%2C%200%2C%200%2C%201%2C%201%2C%200%2C%201%2C%200%5D%0A%20%20%20%20print(%22Before%3A%22%2C%20ind%2C%20%22fitness%20%3D%22%2C%20fitness(ind))%0A%20%20%20%20print(%22After%20(pMut%3D0.2)%3A%22%2C%20mutation(ind%2C%200.2)%2C%20%22fitness%20%3D%22%2C%20fitness(mutation(ind%2C%200.2)))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20------%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Putting%20all%20together%0A%20%20%20%20Now%20we%20implement%20our%20%60%60%60runGA()%60%60%60%20function%2C%20that%20will%20call%20every%20other%20function%20we%20created.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(createInitial%2C%20crossover%2C%20mutation%2C%20selectThreeWinners)%3A%0A%20%20%20%20def%20runGA(totalIndividuals%2C%20numberBits%2C%20numberIterations%2C%20pMutation)%3A%0A%20%20%20%20%20%20%20%20fitnesses%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20population%20%3D%20createInitial(totalIndividuals%2C%20numberBits)%0A%0A%20%20%20%20%20%20%20%20for%20k%20in%20range(0%2C%20numberIterations)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20winners%20%3D%20selectThreeWinners(population)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20next_gen%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20%5B0%2C%201%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20j%20in%20range(i%20%2B%201%2C%203)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c1%2C%20c2%20%3D%20crossover(winners%5Bi%5D%2C%20winners%5Bj%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20next_gen.append(c1)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20next_gen.append(c2)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20combined%20%3D%20population%20%2B%20next_gen%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20range(len(combined))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20combined%5Bi%5D%20%3D%20mutation(combined%5Bi%5D%2C%20pMutation)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20combined.sort(key%3Dfitness)%0A%20%20%20%20%20%20%20%20%20%20%20%20population%20%3D%20combined%5B-totalIndividuals%3A%5D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20fitnesses.append(max(%5Bfitness(ind)%20for%20ind%20in%20population%5D))%0A%0A%20%20%20%20%20%20%20%20return%20fitnesses%0A%20%20%20%20return%20(runGA%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20And%20we%20call%20the%20function%20with%20specific%20values%20for%20the%20parameters%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20runGA)%3A%0A%20%20%20%20_fit%20%3D%20runGA(100%2C%2050%2C%2010%2C%200.01)%0A%20%20%20%20plt.plot(range(len(_fit))%2C%20_fit)%0A%20%20%20%20plt.xlabel(%22Generation%22)%0A%20%20%20%20plt.ylabel(%22Best%20fitness%22)%0A%20%20%20%20plt.title(%22MaxOne%20GA%20progress%22)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20------%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Task%206%3A%0A%20%20%20%20Explore%20modifying%20the%20selection%20and%20crossover%20processes%20to%20achieve%20a%20better%20fitness.%20You%20can%20also%20modify%20how%20the%20%60%60%60next_gen%60%60%60%20is%20being%20defined%20in%20%60%60%60runGA()%60%60%60%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20---------%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Example%202%3A%20Maximising%20a%20real-valued%20function%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20We%20want%20to%20find%20the%20values%20%24x%5E%7B*%7D%24%20and%20%24y%5E%7B*%7D%24%20such%20that%20%24f(x%2Cy)%3D-(x%2By)%5E2%24%20has%20a%20maximum.%0A%0A%20%20%20%20We%20can%20start%20with%20random%20arrays%20of%20two%20elements%20%24%5Bx_0%2Cy_0%5D%24%20where%20%24x_0%2Cy_0%5Cin%5B-1%2C1%5D%24%20and%20use%20genetic%20algorithm%20to%20see%20if%20we%20find%20the%20optimal%20solution.%0A%0A%20%20%20%20Let's%20visualise%20%24f(x%2Cy)%24%3A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(np%2C%20plt)%3A%0A%20%20%20%20plt.rcParams%5B'figure.dpi'%5D%20%3D%20300%0A%0A%20%20%20%20from%20matplotlib%20import%20cm%0A%20%20%20%20from%20matplotlib.ticker%20import%20LinearLocator%0A%20%20%20%20_fig%2C%20_ax%20%3D%20plt.subplots(subplot_kw%3D%7B'projection'%3A%20'3d'%7D)%0A%20%20%20%20_X%20%3D%20np.arange(-5%2C%205%2C%200.25)%0A%20%20%20%20_Y%20%3D%20np.arange(-5%2C%205%2C%200.25)%0A%20%20%20%20_X%2C%20_Y%20%3D%20np.meshgrid(_X%2C%20_Y)%0A%20%20%20%20_Z%20%3D%20-(_X%20**%202%20%2B%20_Y%20**%202)%0A%20%20%20%20_surf%20%3D%20_ax.plot_surface(_X%2C%20_Y%2C%20_Z%2C%20cmap%3Dcm.coolwarm%2C%20linewidth%3D0%2C%20antialiased%3DFalse)%0A%20%20%20%20_ax.set(xlabel%3D'X'%2C%20ylabel%3D'Y'%2C%20zlabel%3D'Z')%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20------------%0A%20%20%20%20Now%20let's%20create%20some%20initial%20points%20and%20plot%20them%20together%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo%2C%20np%2C%20random)%3A%0A%20%20%20%20import%20plotly.graph_objects%20as%20go%0A%0A%20%20%20%20population%20%3D%20%5B%5D%0A%20%20%20%20for%20i%20in%20range(100)%3A%0A%20%20%20%20%20%20%20%20x%20%3D%20random.uniform(-1%2C%201)%0A%20%20%20%20%20%20%20%20y%20%3D%20random.uniform(-1%2C%201)%0A%20%20%20%20%20%20%20%20population.append(%5Bx%2C%20y%5D)%0A%0A%20%20%20%20x_vals%20%3D%20%5Bp%5B0%5D%20for%20p%20in%20population%5D%0A%20%20%20%20y_vals%20%3D%20%5Bp%5B1%5D%20for%20p%20in%20population%5D%0A%20%20%20%20z_vals%20%3D%20%5B-x**2%20-%20y**2%20for%20x%2C%20y%20in%20population%5D%0A%0A%20%20%20%20scatter%20%3D%20go.Scatter3d(%0A%20%20%20%20%20%20%20%20x%3Dx_vals%2C%0A%20%20%20%20%20%20%20%20y%3Dy_vals%2C%0A%20%20%20%20%20%20%20%20z%3Dz_vals%2C%0A%20%20%20%20%20%20%20%20mode%3D'markers'%2C%0A%20%20%20%20%20%20%20%20marker%3Ddict(size%3D5%2C%20color%3Dz_vals%2C%20colorscale%3D'Viridis'%2C%20opacity%3D0.8)%2C%0A%20%20%20%20%20%20%20%20name%3D'Points'%0A%20%20%20%20)%0A%0A%20%20%20%20X%20%3D%20np.linspace(-1%2C%201%2C%2050)%0A%20%20%20%20Y%20%3D%20np.linspace(-1%2C%201%2C%2050)%0A%20%20%20%20X%2C%20Y%20%3D%20np.meshgrid(X%2C%20Y)%0A%20%20%20%20Z%20%3D%20-X**2%20-%20Y**2%0A%0A%20%20%20%20surface%20%3D%20go.Surface(%0A%20%20%20%20%20%20%20%20x%3DX%2C%20y%3DY%2C%20z%3DZ%2C%0A%20%20%20%20%20%20%20%20colorscale%3D'Viridis'%2C%20opacity%3D0.5%2C%20showscale%3DFalse%0A%20%20%20%20)%0A%0A%20%20%20%20fig%20%3D%20go.Figure(data%3D%5Bsurface%2C%20scatter%5D)%0A%20%20%20%20fig.update_layout(%0A%20%20%20%20%20%20%20%20title%3D%22Interactive%203D%20Plot%20of%20f(x%2Cy)%20%3D%20-x%C2%B2%20-%20y%C2%B2%22%2C%0A%20%20%20%20%20%20%20%20scene%3Ddict(%0A%20%20%20%20%20%20%20%20%20%20%20%20xaxis_title%3D%22X%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20yaxis_title%3D%22Y%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20zaxis_title%3D%22Z%20%3D%20-x%C2%B2%20-%20y%C2%B2%22%2C%0A%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20width%3D700%2C%0A%20%20%20%20%20%20%20%20height%3D600%2C%0A%20%20%20%20)%0A%0A%20%20%20%20mo.ui.plotly(fig)%0A%20%20%20%20return%20(go%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Final%20Task%3A%0A%20%20%20%20Implement%20the%20following%20functions%20to%20run%20a%20genetic%20algorithm%20for%20the%20probklem%20stated%20above.%0A%20%20%20%20your%20algorithm%20should%20do%20the%20following%3A%0A%20%20%20%20-%20Create%20an%20initial%20population%20of%20100%20points%20scattered%20randomnly%20in%20the%20range%20%24x%3D%5B-1%2C1%5D%24%20and%20%24y%3D%5B-1%2C1%5D%24%0A%20%20%20%20-%20Calculate%20the%20fitness%20of%20each%20point%20is%20given%20by%20evaluating%20the%20point%20in%20the%20function%20%24f(x%2Cy)%24.%0A%20%20%20%20-%20Selection%20process%20is%20similar%20as%20Example%201%20(i.e.%20selecting%20three%20winners)%0A%20%20%20%20-%20You%20can%20implement%20whatever%20crossover%20you%20consider%20adequate.%0A%20%20%20%20-%20For%20each%20step%2C%20each%20individual%20suffers%20a%20mutation%20on%20each%20of%20its%20coordinates%20%24x%24%20and%20%24y%24%20which%20are%20modified%20by%20a%20random%20noise%20%24%5Cdelta%24%2C%20where%20%24%5Cdelta%3D%5B-0.05%2C0.05%5D%24%20(uniformly%20distributed).%0A%20%20%20%20-%20Implement%20the%20%60%60%60runGA_1()%60%60%60%20function%20so%20it%20runs%20100%20iterations%20of%20the%20algorithm.%20Check%20if%20the%20points%20converge%20to%20a%20solution.%0A%0A%20%20%20%20%23%23%20Extra%20task%20(not%20compulsory)%3A%0A%20%20%20%20-%20Plot%20the%20points%20for%20each%20iteration%20of%20the%20algorithm%20together%20with%20the%20surface.%20Visualise%20how%20the%20points%20move%20through%20the%20surface%0A%20%20%20%20-%20Visualise%20how%20the%20points%20move%20through%20the%20surface%20by%20plotting%20the%20path%20or%20trail%20that%20they%20leave%20when%20they%20move%20from%20one%20iteration%20to%20the%20next%20one.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20createInitial_1()%3A%0A%20%20%20%20%20%20%20%20population%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20for%20_%20in%20range(100)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20x%20%3D%20random.uniform(-1%2C%201)%0A%20%20%20%20%20%20%20%20%20%20%20%20y%20%3D%20random.uniform(-1%2C%201)%0A%20%20%20%20%20%20%20%20%20%20%20%20population.append(%5Bx%2C%20y%5D)%0A%20%20%20%20%20%20%20%20return%20population%0A%20%20%20%20return%20(createInitial_1%2C)%0A%0A%0A%40app.function%0Adef%20fitness_1(individual)%3A%0A%20%20%20%20x%2C%20y%20%3D%20individual%0A%20%20%20%20return%20-((x%20%2B%20y)%20**%202)%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20selectThreeWinners_1(population)%3A%0A%20%20%20%20%20%20%20%20def%20tournament2(pop)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20a%2C%20b%20%3D%20random.sample(pop%2C%202)%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20a%20if%20fitness_1(a)%20%3E%3D%20fitness_1(b)%20else%20b%0A%0A%20%20%20%20%20%20%20%20firstWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20secondWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20thirdWinner%20%3D%20tournament2(population)%0A%20%20%20%20%20%20%20%20return%20(firstWinner%2C%20secondWinner%2C%20thirdWinner)%0A%20%20%20%20return%20(selectThreeWinners_1%2C)%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20crossover_1(parent1%2C%20parent2)%3A%0A%20%20%20%20%20%20%20%20alpha%20%3D%20random.random()%0A%20%20%20%20%20%20%20%20x1%2C%20y1%20%3D%20parent1%0A%20%20%20%20%20%20%20%20x2%2C%20y2%20%3D%20parent2%0A%20%20%20%20%20%20%20%20firstChild%20%3D%20%5Balpha%20*%20x1%20%2B%20(1%20-%20alpha)%20*%20x2%2C%20alpha%20*%20y1%20%2B%20(1%20-%20alpha)%20*%20y2%5D%0A%20%20%20%20%20%20%20%20secondChild%20%3D%20%5B(1%20-%20alpha)%20*%20x1%20%2B%20alpha%20*%20x2%2C%20(1%20-%20alpha)%20*%20y1%20%2B%20alpha%20*%20y2%5D%0A%20%20%20%20%20%20%20%20return%20(firstChild%2C%20secondChild)%0A%20%20%20%20return%20(crossover_1%2C)%0A%0A%0A%40app.cell%0Adef%20_(random)%3A%0A%20%20%20%20def%20mutation_1(individual%2C%20pMutation%3D1.0)%3A%0A%20%20%20%20%20%20%20%20x%2C%20y%20%3D%20individual%0A%0A%20%20%20%20%20%20%20%20if%20random.random()%20%3C%20pMutation%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20x%20%2B%3D%20random.uniform(-0.05%2C%200.05)%0A%20%20%20%20%20%20%20%20if%20random.random()%20%3C%20pMutation%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20y%20%2B%3D%20random.uniform(-0.05%2C%200.05)%0A%0A%20%20%20%20%20%20%20%20x%20%3D%20max(-1%2C%20min(1%2C%20x))%0A%20%20%20%20%20%20%20%20y%20%3D%20max(-1%2C%20min(1%2C%20y))%0A%20%20%20%20%20%20%20%20return%20%5Bx%2C%20y%5D%0A%20%20%20%20return%20(mutation_1%2C)%0A%0A%0A%40app.cell%0Adef%20_(createInitial_1%2C%20crossover_1%2C%20mutation_1%2C%20selectThreeWinners_1)%3A%0A%20%20%20%20def%20runGA_1()%3A%0A%20%20%20%20%20%20%20%20population%20%3D%20createInitial_1()%0A%20%20%20%20%20%20%20%20best_fitnesses%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20history%20%3D%20%5B%5Bp%5B%3A%5D%20for%20p%20in%20population%5D%5D%0A%0A%20%20%20%20%20%20%20%20elite_size%20%3D%2010%0A%0A%20%20%20%20%20%20%20%20for%20_%20in%20range(100)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20population.sort(key%3Dfitness_1)%0A%20%20%20%20%20%20%20%20%20%20%20%20elites%20%3D%20%5Bp%5B%3A%5D%20for%20p%20in%20population%5B-elite_size%3A%5D%5D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20winners%20%3D%20selectThreeWinners_1(population)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20children%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%20in%20%5B0%2C%201%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20for%20j%20in%20range(i%20%2B%201%2C%203)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c1%2C%20c2%20%3D%20crossover_1(winners%5Bi%5D%2C%20winners%5Bj%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20children.append(c1)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20children.append(c2)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20next_gen%20%3D%20elites%20%2B%20%5Bmutation_1(ch%2C%201.0)%20for%20ch%20in%20children%5D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20len(next_gen)%20%3C%20100%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20c1%2C%20c2%20%3D%20crossover_1(winners%5B0%5D%2C%20winners%5B1%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20next_gen.append(mutation_1(c1%2C%201.0))%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20len(next_gen)%20%3C%20100%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20next_gen.append(mutation_1(c2%2C%201.0))%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20next_gen.sort(key%3Dfitness_1)%0A%20%20%20%20%20%20%20%20%20%20%20%20population%20%3D%20next_gen%5B-100%3A%5D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20best_fitnesses.append(max(fitness_1(p)%20for%20p%20in%20population))%0A%20%20%20%20%20%20%20%20%20%20%20%20history.append(%5Bp%5B%3A%5D%20for%20p%20in%20population%5D)%0A%0A%20%20%20%20%20%20%20%20return%20history%2C%20best_fitnesses%0A%20%20%20%20return%20(runGA_1%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Running%20the%20Genetic%20Algorithm%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(runGA_1)%3A%0A%20%20%20%20history%2C%20best_fitnesses%20%3D%20runGA_1()%0A%20%20%20%20return%20best_fitnesses%2C%20history%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20**Use%20the%20slider%20to%20explore%20different%20iterations%3A**%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(history%2C%20mo)%3A%0A%20%20%20%20slider%20%3D%20mo.ui.slider(0%2C%20len(history)%20-%201%2C%20value%3Dlen(history)%20-%201%2C%20label%3D%22Iteration%22)%0A%20%20%20%20slider%0A%20%20%20%20return%20(slider%2C)%0A%0A%0A%40app.cell%0Adef%20_(go%2C%20history%2C%20mo%2C%20np%2C%20slider)%3A%0A%20%20%20%20t%20%3D%20int(slider.value)%0A%20%20%20%20pop_t%20%3D%20history%5Bt%5D%0A%20%20%20%20x_vals_ga%20%3D%20%5Bp%5B0%5D%20for%20p%20in%20pop_t%5D%0A%20%20%20%20y_vals_ga%20%3D%20%5Bp%5B1%5D%20for%20p%20in%20pop_t%5D%0A%20%20%20%20z_vals_ga%20%3D%20%5Bfitness_1(p)%20for%20p%20in%20pop_t%5D%0A%0A%20%20%20%20X_ga%20%3D%20np.linspace(-1%2C%201%2C%2080)%0A%20%20%20%20Y_ga%20%3D%20np.linspace(-1%2C%201%2C%2080)%0A%20%20%20%20X_ga%2C%20Y_ga%20%3D%20np.meshgrid(X_ga%2C%20Y_ga)%0A%20%20%20%20Z_ga%20%3D%20-((X_ga%20%2B%20Y_ga)%20**%202)%0A%0A%20%20%20%20surface_ga%20%3D%20go.Surface(x%3DX_ga%2C%20y%3DY_ga%2C%20z%3DZ_ga%2C%20colorscale%3D%22Viridis%22%2C%20opacity%3D0.45%2C%20showscale%3DFalse)%0A%20%20%20%20scatter_ga%20%3D%20go.Scatter3d(%0A%20%20%20%20%20%20%20%20x%3Dx_vals_ga%2C%20y%3Dy_vals_ga%2C%20z%3Dz_vals_ga%2C%0A%20%20%20%20%20%20%20%20mode%3D%22markers%22%2C%0A%20%20%20%20%20%20%20%20marker%3Ddict(size%3D4%2C%20color%3Dz_vals_ga%2C%20colorscale%3D%22Viridis%22%2C%20opacity%3D0.9)%2C%0A%20%20%20%20%20%20%20%20name%3Df%22Population%20%40%20iter%20%7Bt%7D%22%2C%0A%20%20%20%20)%0A%0A%20%20%20%20fig_ga%20%3D%20go.Figure(data%3D%5Bsurface_ga%2C%20scatter_ga%5D)%0A%20%20%20%20fig_ga.update_layout(%0A%20%20%20%20%20%20%20%20title%3Df%22Population%20on%20f(x%2Cy)%3D-(x%2By)%C2%B2%20(iteration%20%7Bt%7D)%22%2C%0A%20%20%20%20%20%20%20%20scene%3Ddict(xaxis_title%3D%22X%22%2C%20yaxis_title%3D%22Y%22%2C%20zaxis_title%3D%22Z%22)%2C%0A%20%20%20%20%20%20%20%20width%3D760%2C%0A%20%20%20%20%20%20%20%20height%3D620%2C%0A%20%20%20%20)%0A%0A%20%20%20%20mo.ui.plotly(fig_ga)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Best%20Fitness%20Over%20Generations%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(best_fitnesses%2C%20plt)%3A%0A%20%20%20%20plt.figure(figsize%3D(10%2C%206))%0A%20%20%20%20plt.plot(range(len(best_fitnesses))%2C%20best_fitnesses)%0A%20%20%20%20plt.xlabel(%22Generation%22)%0A%20%20%20%20plt.ylabel(%22Best%20Fitness%22)%0A%20%20%20%20plt.title(%22Best%20Fitness%20Over%20Generations%20(f(x%2Cy)%20%3D%20-(x%2By)%C2%B2)%22)%0A%20%20%20%20plt.grid(True)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.18.1",
+            "serverToken": "unused",
+            "config": {"ai": {"models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "above", "code_editor_font_size": 21, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "dark"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": true},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
